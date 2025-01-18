@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { Kanit } from "next/font/google";
 
+import "@mantine/core/styles.css";
+
+import {
+  ColorSchemeScript,
+  MantineProvider,
+  mantineHtmlProps,
+} from "@mantine/core";
+
 import "./globals.css";
 
 const kanit = Kanit({
@@ -15,7 +23,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en" {...mantineHtmlProps}>
+      <head>
+        <ColorSchemeScript />
+      </head>
       <body
         className={`${kanit.className} min-w-[90rem] font-normal text-base bg-blue-50`}
       >
@@ -74,7 +85,7 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <div className="w-full h-20 absolute bg-black top-0 shadow-[0_10px_10px_rgba(179,213,249,0.5)]"></div>
-        {children}
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
   );
