@@ -9,6 +9,8 @@ import {
   mantineHtmlProps,
 } from "@mantine/core";
 
+import { QueryProvider } from "@/lib/providers";
+
 import "./globals.css";
 
 const kanit = Kanit({
@@ -85,7 +87,9 @@ export default function RootLayout({ children }) {
           </div>
         </div>
         <div className="w-full h-20 absolute bg-black top-0 shadow-[0_10px_10px_rgba(179,213,249,0.5)]"></div>
-        <MantineProvider>{children}</MantineProvider>
+        <QueryProvider>
+          <MantineProvider>{children}</MantineProvider>
+        </QueryProvider>
       </body>
     </html>
   );
