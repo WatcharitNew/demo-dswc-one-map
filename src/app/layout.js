@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body
-        className={`${kanit.className} min-w-[1440px] font-normal text-base bg-blue-50`}
+        className={`${kanit.className} min-w-[90rem] font-normal text-base bg-blue-50`}
       >
         <div className="w-full h-20 bg-white  flex items-center px-4 pr-8 relative z-50">
           <div className="flex-grow">
@@ -47,7 +47,7 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </div>
-        <div className="w-full flex justify-center relative mt-[-12px]">
+        <div className="w-full flex justify-center relative -mt-3">
           <Image
             src="/navbar-curve.svg"
             alt="navbar-curve"
@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
             priority
             className="drop-shadow-[0_10px_10px_rgba(179,213,249,0.5)] z-10"
           />
-          <p className="text-2xl text-blue-900 absolute left-1/2 top-4 ml-[-34px] z-10">
+          <p className="text-2xl text-blue-900 absolute left-1/2 top-4 -ml-[2.125rem] z-10">
             แผนที่จังหวัดเชียงราย
           </p>
           <div className="absolute right-0 top-6 h-16 w-2/5">
@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
               layout="fill"
               objectFit="contain"
             />
-            <div className="h-10 w-[330px] px-7 py-2 bg-white right-0 top-3 absolute border-l-[1px] border-l-gray-200">
+            <div className="h-10 w-[20.625rem] px-7 py-2 bg-white right-0 top-3 absolute border-l border-l-gray-200">
               <p className="text-right text-gray-900">
                 เข้าสู่ระบบ การสนับสนุนการตัดสินใจ (DSS)
               </p>
