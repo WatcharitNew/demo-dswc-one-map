@@ -4,7 +4,7 @@ import { FLOOD_LEVEL, INFORMATION, MUDSLIDE } from "@/constants";
 
 import { ColorSwatch, Flex, Text, Transition } from "@mantine/core";
 
-export const MapLabel = ({ selectedDisaster }) => {
+export const MapLabel = ({ selectedDisaster, selectedInformation }) => {
   return (
     <Flex className="flex-col items-end gap-3 py-2 px-6 bg-white rounded-md">
       <Transition
@@ -53,10 +53,22 @@ export const MapLabel = ({ selectedDisaster }) => {
 
       <Flex className="gap-5 items-center">
         {INFORMATION.map((information) => (
-          <Flex key={information.key} className="items-center gap-2">
-            <information.icon className="size-6 text-blue-400" />
-            <Text>{information.title}</Text>
-          </Flex>
+          <Transition
+            key={information.key}
+            mounted={selectedInformation.includes(information.key)}
+            transition="pop"
+            duration={400}
+            timingFunction="ease"
+          >
+            {(style) => (
+              <div style={style}>
+                <Flex className="items-center gap-2">
+                  <information.icon className="size-6 text-blue-400" />
+                  <Text>{information.title}</Text>
+                </Flex>
+              </div>
+            )}
+          </Transition>
         ))}
       </Flex>
     </Flex>
