@@ -1,7 +1,7 @@
 import { NavLink, Radio } from '@mantine/core';
 import React from 'react';
 
-const MapFilterRadio = ({ label }) => {
+const MapFilterRadio = ({ label, checked, onChange }) => {
   return (
     <NavLink
       label={
@@ -11,6 +11,8 @@ const MapFilterRadio = ({ label }) => {
           color="green"
           size="xs"
           variant="outline"
+          checked={checked}
+          onChange={(event) => onChange(event.currentTarget.checked)}
           classNames={{
             body: 'items-center'
           }}

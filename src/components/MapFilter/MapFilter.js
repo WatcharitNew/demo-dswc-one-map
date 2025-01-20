@@ -1,12 +1,21 @@
-import { NavLink, Image, Radio } from '@mantine/core';
-import React from 'react';
+'use client';
+
+import { NavLink, Image } from '@mantine/core';
+import React, { useState, useCallback } from 'react';
 import MapFilterRadio from './MapFilterRadio';
 import MapFilterSwitch from './MapFilterSwitch';
 
 const MapFilter = () => {
+  const [filterValues, setFilterValues] = useState({
+    disasterArea: 'วันนี้',
+    disasterFactors: {},
+    populationData: {}
+  });
+
   const mockData = {
-    "พื้นที่เกิดภัย": {
+    disasterArea: {
       type: 'radio',
+      label: 'พื้นที่เกิดภัย',
       data: [
         "วันนี้",
         "คาดการณ์ 1 วัน",
@@ -16,23 +25,50 @@ const MapFilter = () => {
         "พื้นที่ที่ได้รับความเสียหาย"
       ]
     },
-    "ปัจจัยการเกิดภัย": {
-      type: 'checkbox',
+    "disasterFactors": {
+      type: 'switch',
+      label: 'ปัจจัยการเกิดภัย',
       data: [
-      "ปริมาณน้ำฝน",
-      "ปริมาณน้ำเขื่อน",
-      "ปริมาณน้ำท่า",
-      "ความชื้นดิน"
+        "ปริมาณน้ำฝน",
+        "ปริมาณน้ำเขื่อน",
+        "ปริมาณน้ำท่า",
+        "ความชื้นดิน"
       ]
     },
-    "ข้อมูลประชากร": {
-      type: 'checkbox',
+    "populationData": {
+      type: 'switch',
+      label: 'ข้อมูลประชากร',
       data: [
-      "ประชาชน",
-      "ครัวเรือน"
+        "ประชาชน",
+        "ครัวเรือน"
       ]
     }
-  }
+  };
+
+  const updateMapLayers = useCallback(async (newFilters) => {
+    console.log(newFilters)
+  }, []);
+
+  const handleRadioChange = useCallback((value) => {
+    const newFilters = {
+      ...filterValues,
+      disasterArea: value
+    };
+    setFilterValues(newFilters);
+    updateMapLayers(newFilters);
+  }, [filterValues, updateMapLayers]);
+
+  const handleSwitchChange = useCallback((section, value, checked) => {
+    const newFilters = {
+      ...filterValues,
+      [section]: {
+        ...filterValues[section],
+        [value]: checked
+      }
+    };
+    setFilterValues(newFilters);
+    updateMapLayers(newFilters);
+  }, [filterValues, updateMapLayers]);
 
   return (
     <div className='w-fit bg-white'>
@@ -43,19 +79,32 @@ const MapFilter = () => {
         defaultOpened={true}
         className="w-64"
       >
-        {Object.keys(mockData).map((key) => (
+        {Object.entries(mockData).map(([key, { type, label, data }]) => (
           <NavLink
             key={key}
-            label={<span className="text-gray-900 text-base">{key}</span>}
+            label={<span className="text-gray-900 text-base">{label}</span>}
             opened={true}
             childrenOffset={0}
             disableRightSectionRotation={true}
             rightSection={<div />}
           >
-            {mockData[key].data.map((value) => (
-              mockData[key].type === 'radio' ?
-                <MapFilterRadio key={value} label={value} /> :
-                <MapFilterSwitch key={value} label={value} />
+            {data.map((value, index) => (
+              type === 'radio' ? (
+                <MapFilterRadio
+                  key={value}
+                  label={value}
+                  checked={filterValues.disasterArea === value}
+                  onChange={() => handleRadioChange(value)}
+                  defaultOpened={index == 0}
+                />
+              ) : (
+                <MapFilterSwitch
+                  key={value}
+                  label={value}
+                  checked={filterValues[key]?.[value] || false}
+                  onChange={(checked) => handleSwitchChange(key, value, checked)}
+                />
+              )
             ))}
           </NavLink>
         ))}
