@@ -1,3 +1,5 @@
+import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
+
 export const FILTER_DATA = {
   disasterArea: {
     type: "radio",
@@ -195,5 +197,33 @@ export const MUDSLIDE = [
   {
     color: "#FFFFFF",
     title: "ปกติ",
+  },
+];
+
+export const INFORMATION = [
+  {
+    icon: Boat,
+    key: "boat",
+    title: "เรือ",
+  },
+  {
+    icon: Home,
+    key: "home",
+    title: "ครัวเรือน",
+  },
+  {
+    icon: Human,
+    key: "human",
+    title: "ประชาชน",
+  },
+  {
+    icon: Seeds,
+    key: "seeds",
+    title: "เมล็ดพันธุ์ช่วยเหลือ",
+  },
+  {
+    icon: Shelter,
+    key: "shelter",
+    title: "ศูนย์พักพิง",
   },
 ];

@@ -1,6 +1,6 @@
 "use client";
 
-import { FLOOD_LEVEL, MUDSLIDE } from "@/constants";
+import { FLOOD_LEVEL, INFORMATION, MUDSLIDE } from "@/constants";
 
 import { ColorSwatch, Flex, Text } from "@mantine/core";
 
@@ -25,6 +25,15 @@ export const MapLabel = () => {
           <Flex key={level.title} className="items-center gap-2">
             <ColorSwatch color={level.color} radius="sm" size={16} />
             <Text>{level.title}</Text>
+          </Flex>
+        ))}
+      </Flex>
+
+      <Flex className="gap-5 items-center">
+        {INFORMATION.map((information) => (
+          <Flex key={information.key} className="items-center gap-2">
+            <information.icon className="size-6 text-blue-400"/>
+            <Text>{information.title}</Text>
           </Flex>
         ))}
       </Flex>
