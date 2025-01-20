@@ -1,13 +1,23 @@
 "use client";
 
+import { useMemo } from "react";
+
 import { FLOOD_LEVEL, INFORMATION, MUDSLIDE } from "@/constants";
 
 import { ColorSwatch, Flex, Text } from "@mantine/core";
 
-export const MapLabel = () => {
+export const MapLabel = ({selectedDisaster}) => {
+  const isSelectedFlood = useMemo(() => {
+    return selectedDisaster.includes('flood')
+  }, [selectedDisaster])
+
+  const isSelectedMudslide = useMemo(() => {
+    return selectedDisaster.includes('mudslide')
+  }, [selectedDisaster])
+
   return (
-    <Flex className="flex-col items-end gap-3 py-2 px-6 mt-10 bg-white rounded-md">
-      <Flex className="gap-5 items-center">
+    <Flex className="flex-col items-end gap-3 py-2 px-6 bg-white rounded-md">
+      {isSelectedFlood && <Flex className="gap-5 items-center">
         <Text>อุทกภัย:</Text>
 
         {FLOOD_LEVEL.map((level) => (
@@ -16,9 +26,9 @@ export const MapLabel = () => {
             <Text>{level.title}</Text>
           </Flex>
         ))}
-      </Flex>
+      </Flex>}
 
-      <Flex className="gap-5 items-center">
+      {isSelectedMudslide && <Flex className="gap-5 items-center">
         <Text>ดินโคลนถล่ม:</Text>
 
         {MUDSLIDE.map((level) => (
@@ -27,7 +37,7 @@ export const MapLabel = () => {
             <Text>{level.title}</Text>
           </Flex>
         ))}
-      </Flex>
+      </Flex>}
 
       <Flex className="gap-5 items-center">
         {INFORMATION.map((information) => (
