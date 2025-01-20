@@ -12,6 +12,7 @@ const MapFilter = () => {
     populationData: {}
   });
 
+  // TODO: move to api or move to a file for hardcode
   const mockData = {
     disasterArea: {
       type: 'radio',
@@ -46,6 +47,7 @@ const MapFilter = () => {
   };
 
   const updateMapLayers = useCallback(async (newFilters) => {
+    // TODO: call BE API
     console.log(newFilters)
   }, []);
 
