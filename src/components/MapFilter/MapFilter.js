@@ -71,7 +71,7 @@ const MapFilter = () => {
   }, [filterValues, updateMapLayers]);
 
   return (
-    <div className='w-fit bg-white'>
+    <div className='w-fit bg-white rounded-lg'>
       <NavLink
         href="#required-for-focus"
         label={<span className="text-gray-900 text-xl font-medium">ชั้นข้อมูล</span>}
