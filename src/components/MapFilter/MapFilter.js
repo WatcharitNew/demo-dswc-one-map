@@ -4,6 +4,7 @@ import { NavLink, Image } from '@mantine/core';
 import React, { useState, useCallback } from 'react';
 import MapFilterRadio from './MapFilterRadio';
 import MapFilterSwitch from './MapFilterSwitch';
+import { FILTER_DATA } from '@/constants';
 
 const MapFilter = () => {
   const [filterValues, setFilterValues] = useState({
@@ -11,40 +12,6 @@ const MapFilter = () => {
     disasterFactors: {},
     populationData: {}
   });
-
-  // TODO: move to api or move to a file for hardcode
-  const mockData = {
-    disasterArea: {
-      type: 'radio',
-      label: 'พื้นที่เกิดภัย',
-      data: [
-        "วันนี้",
-        "คาดการณ์ 1 วัน",
-        "คาดการณ์ 2 วัน",
-        "คาดการณ์ 3 วัน",
-        "คาดการณ์ 5 วัน",
-        "พื้นที่ที่ได้รับความเสียหาย"
-      ]
-    },
-    "disasterFactors": {
-      type: 'switch',
-      label: 'ปัจจัยการเกิดภัย',
-      data: [
-        "ปริมาณน้ำฝน",
-        "ปริมาณน้ำเขื่อน",
-        "ปริมาณน้ำท่า",
-        "ความชื้นดิน"
-      ]
-    },
-    "populationData": {
-      type: 'switch',
-      label: 'ข้อมูลประชากร',
-      data: [
-        "ประชาชน",
-        "ครัวเรือน"
-      ]
-    }
-  };
 
   const updateMapLayers = useCallback(async (newFilters) => {
     // TODO: call BE API
@@ -73,7 +40,7 @@ const MapFilter = () => {
   }, [filterValues, updateMapLayers]);
 
   return (
-    <div className='w-fit bg-white rounded-lg'>
+    <div className='w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto'>
       <NavLink
         href="#required-for-focus"
         label={<span className="text-gray-900 text-xl font-medium">ชั้นข้อมูล</span>}
@@ -81,7 +48,7 @@ const MapFilter = () => {
         defaultOpened={true}
         className="w-64"
       >
-        {Object.entries(mockData).map(([key, { type, label, data }]) => (
+        {Object.entries(FILTER_DATA).map(([key, { type, label, data }]) => (
           <NavLink
             key={key}
             label={<span className="text-gray-900 text-base">{label}</span>}
