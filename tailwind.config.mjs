@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -11,6 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         gray: {
+          100: "#F8F8FA",
           200: "##E5E7EB",
           300: "#999DA6",
           400: "#9CA3AF",
@@ -21,6 +23,15 @@ export default {
           50: "#F4F9FD",
           800: "#1473E6",
           900: "#213166",
+        },
+        yellow: {
+          100: "#FEF3C7",
+        },
+        red: {
+          100: "#FFF0F0",
+        },
+        green: {
+          100: "#EBF9EE",
         },
       },
     },

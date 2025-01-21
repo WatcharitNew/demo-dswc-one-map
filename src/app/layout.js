@@ -4,10 +4,10 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
-
+import MainContextProvider from "@/contexts/mainContext";
 import { QueryProvider } from "@/lib/providers";
 import { AppLayout } from "@/components";
-
+import theme from "../style/theme";
 import "@mantine/core/styles.css";
 import "./globals.css";
 
@@ -31,8 +31,10 @@ export default function RootLayout({ children }) {
         className={`${kanit.className} min-w-[90rem] font-normal text-base bg-blue-50`}
       >
         <QueryProvider>
-          <MantineProvider>
-            <AppLayout>{children}</AppLayout>
+          <MantineProvider theme={theme}>
+            <MainContextProvider>
+              <AppLayout>{children}</AppLayout>
+            </MainContextProvider>
           </MantineProvider>
         </QueryProvider>
       </body>
