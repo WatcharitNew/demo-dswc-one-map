@@ -13,7 +13,7 @@ const MapFilterSwitch = ({ label, checked, onChange }) => {
           checked={checked}
           onChange={(event) => onChange(event.currentTarget.checked)}
           classNames={{
-            body: 'items-center'
+            body: 'items-center cursor-pointer'
           }}
         />
       }
