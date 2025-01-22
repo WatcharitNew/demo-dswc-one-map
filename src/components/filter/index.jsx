@@ -61,7 +61,6 @@ const Filter = () => {
           data={DISTRICT_OPTIONS}
           clearable={true}
           onChange={(value) => {
-            console.log("value", value);
             if (value) {
               onChangeSearch({ district: value });
             } else {
