@@ -3,6 +3,7 @@ import { Button, createTheme, Select } from "@mantine/core";
 import buttonClass from "./Button.module.css";
 
 const theme = createTheme({
+  fontFamily: 'Kanit',
   components: {
     Button: Button.extend({
       classNames: buttonClass,
