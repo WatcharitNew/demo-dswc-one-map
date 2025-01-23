@@ -1,21 +1,23 @@
-'use client'
+"use client";
 
-import { useState } from "react"
-import { Stack } from "@mantine/core"
+import { useContext } from "react";
+import { Image } from "@mantine/core";
 
-import { TemporaryDisaster } from "@/components/TemporaryDisaster"
-import { TemporaryInformation } from "@/components/TemporaryInformation"
-import { MapLabel } from "@/components"
+import { MainContext } from "@/contexts/mainContext";
+
+import { MapLabel } from "@/components";
+import { MapFilter } from ".";
 
 export const MapContainer = () => {
-  const [disaster, setDisaster] = useState([]);
-  const [information, setInformation] = useState([]);
+  const { selectedDisaster } = useContext(MainContext);
 
   return (
-    <Stack className="px-6">
-      <TemporaryDisaster disaster={disaster} setDisaster={setDisaster}/>
-      <TemporaryInformation information={information} setInformation={setInformation}/>
-      <MapLabel selectedDisaster={disaster} selectedInformation={information}/>
-    </Stack>
-  )
-}
+    <div className="bg-white p-3">
+      <div className="h-[42rem] relative">
+        <Image alt="map" className="h-full" src="/map.png" />
+        <MapFilter />
+      </div>
+      <MapLabel selectedDisaster={selectedDisaster} selectedInformation={[]}/>
+    </div>
+  );
+};

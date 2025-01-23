@@ -15,9 +15,9 @@ const Filter = () => {
     useContext(MainContext);
 
   return (
-    <div className="col bg-blue-50 items-center h-[160px] ml-4">
+    <div className="col bg-blue-50 items-center ml-4 z-50">
       <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-4 pl-0 pr-[30px] rounded-l-[40px] ">
-        <div className="row items-center gap-2">
+        <div className="row items-center gap-2 z-30">
           <Level />
           <div className="row gap-2">
             {DISASTER_TYPE.map((item) => {
@@ -53,7 +53,7 @@ const Filter = () => {
           ข้อมูล​ ณ วันที่ 29 ต.ค. 2024 - 4 พ.ย. 2024
         </p>
       </div>
-      <div className="col gap-1 absolute left-[684px] top-[144px]">
+      <div className="col gap-1 absolute left-[684px] top-[144px] z-30">
         <Select
           value={search?.district ?? null}
           withCheckIcon={false}
