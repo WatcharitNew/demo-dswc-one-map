@@ -1,3 +1,5 @@
+import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
+
 export const FILTER_DATA = {
   disasterArea: {
     type: "radio",
@@ -149,5 +151,79 @@ export const LEVEL = [
     value: "watchOut",
     defaultColor: "bg-yellow-100",
     activeColor: "bg-yellow-500",
+  },
+];
+
+export const FLOOD_LEVEL = [
+  {
+    color: "#426CDB",
+    title: "เสี่ยงสูงมาก",
+  },
+  {
+    color: "#7795E8",
+    title: "เสี่ยงสูง",
+  },
+  {
+    color: "#A5B8EF",
+    title: "เสี่ยงปานกลาง",
+  },
+  {
+    color: "#D2DCF7",
+    title: "เสี่ยงต่ำ",
+  },
+  {
+    color: "#FFFFFF",
+    title: "ปกติ",
+  },
+];
+
+export const MUDSLIDE = [
+  {
+    color: "#8D6541",
+    title: "เสี่ยงสูงมาก",
+  },
+  {
+    color: "#AA8C71",
+    title: "เสี่ยงสูง",
+  },
+  {
+    color: "#C6B2A0",
+    title: "เสี่ยงปานกลาง",
+  },
+  {
+    color: "#E3D9D0",
+    title: "เสี่ยงต่ำ",
+  },
+  {
+    color: "#FFFFFF",
+    title: "ปกติ",
+  },
+];
+
+export const INFORMATION = [
+  {
+    icon: Boat,
+    key: "boat",
+    title: "เรือ",
+  },
+  {
+    icon: Home,
+    key: "home",
+    title: "ครัวเรือน",
+  },
+  {
+    icon: Human,
+    key: "human",
+    title: "ประชาชน",
+  },
+  {
+    icon: Seeds,
+    key: "seeds",
+    title: "เมล็ดพันธุ์ช่วยเหลือ",
+  },
+  {
+    icon: Shelter,
+    key: "shelter",
+    title: "ศูนย์พักพิง",
   },
 ];
