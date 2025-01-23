@@ -38,7 +38,7 @@ export const MapFilter = () => {
   }, [filterValues, updateMapLayers]);
 
   return (
-    <div className='w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto absolute top-10'>
+    <div className='w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto absolute top-10 left-4'>
       <MapFilterComponent
         filterData={FILTER_DATA}
         filterValues={filterValues}

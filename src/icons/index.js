@@ -1,3 +1,4 @@
+export * from './Arrow'
 export * from './Boat'
 export * from './Home'
 export * from './Human'
