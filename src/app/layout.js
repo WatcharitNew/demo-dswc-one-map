@@ -4,9 +4,12 @@ import {
   MantineProvider,
   mantineHtmlProps,
 } from "@mantine/core";
+
 import MainContextProvider from "@/contexts/mainContext";
+import MapFilterContextProvider from "@/contexts/mapFilterContext";
 import { QueryProvider } from "@/lib/providers";
 import { AppLayout } from "@/components";
+
 import theme from "../style/theme";
 import "@mantine/core/styles.css";
 import "./globals.css";
@@ -33,7 +36,9 @@ export default function RootLayout({ children }) {
         <QueryProvider>
           <MantineProvider theme={theme}>
             <MainContextProvider>
-              <AppLayout>{children}</AppLayout>
+              <MapFilterContextProvider>
+                <AppLayout>{children}</AppLayout>
+              </MapFilterContextProvider>
             </MainContextProvider>
           </MantineProvider>
         </QueryProvider>
