@@ -55,7 +55,7 @@ export const MapLabel = ({ selectedDisaster, selectedInformation }) => {
         {INFORMATION.map((information) => (
           <Transition
             key={information.key}
-            mounted={selectedInformation.includes(information.key)}
+            mounted={selectedInformation.includes(information.title)}
             transition="pop"
             duration={400}
             timingFunction="ease"
