@@ -6,7 +6,7 @@ import { ColorSwatch, Flex, Text, Transition } from "@mantine/core";
 
 export const MapLabel = ({ selectedDisaster, selectedInformation }) => {
   return (
-    <Flex className="flex-col items-end gap-3 py-2 px-6 bg-white rounded-md">
+    <Flex className="flex-col items-end gap-3 py-2 px-6 bg-white rounded-md ">
       <Transition
         mounted={selectedDisaster.includes("flood")}
         transition="fade-right"

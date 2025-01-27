@@ -10,12 +10,12 @@ import {
 } from "../../constants/index";
 import Level from "./Level";
 
-const Filter = () => {
+export const Filter = () => {
   const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
     useContext(MainContext);
 
   return (
-    <div className="col bg-blue-50 items-center ml-4 z-50">
+    <div className="col bg-blue-50 items-center ml-4 z-10">
       <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-4 pl-0 pr-[30px] rounded-l-[40px] ">
         <div className="row items-center gap-2 z-30">
           <Level />
@@ -83,5 +83,3 @@ const Filter = () => {
     </div>
   );
 };
-
-export default Filter;
