@@ -1,13 +1,12 @@
 "use client";
 
 import { useContext, useMemo } from "react";
-
+import dynamic from "next/dynamic";
 import { MainContext } from "@/contexts/mainContext";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
-
-import { MapLabel, Map } from "@/components";
+import { MapLabel } from "@/components";
 import { MapFilter } from ".";
-
+const Map = dynamic(() => import("../components/Map/index"), { ssr: false });
 export const MapContainer = () => {
   const { selectedDisaster } = useContext(MainContext);
   const { filterValues } = useContext(MapFilterContext);

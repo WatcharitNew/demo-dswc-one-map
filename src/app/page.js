@@ -1,5 +1,5 @@
 import { Filter } from "@/components";
-import { MapFilter, MapContainer } from "@/containers";
+import { MapContainer } from "@/containers";
 
 export default function Home() {
   return (
