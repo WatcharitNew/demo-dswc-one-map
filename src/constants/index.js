@@ -94,11 +94,15 @@ export const DISASTERS = [
 
 export const DISASTER_TYPE = [
   { label: "อุทกภัย", value: "flood" },
+  { label: "PM2.5", value: "PM2.5" },
   { label: "ดินโคลนถล่ม", value: "mudslide" },
   { label: "วาตภัย", value: "storm" },
   { label: "ภัยแล้ง", value: "drought" },
   { label: "อัคคีภัย", value: "fire" },
+  { label: "แผ่นดินไหว/สึนามิ", value: "earthquake" },
 ];
+
+export const DISASTER_TYPE_ENABLE = ["flood", "PM2.5"];
 
 export const DISTRICT_OPTIONS = [
   {

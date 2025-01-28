@@ -4,7 +4,7 @@ import { createContext, useState } from "react";
 export const MainContext = createContext(null);
 
 const MainContextProvider = ({ children }) => {
-  const [selectedDisaster, setSelectedDisaster] = useState([]);
+  const [selectedDisaster, setSelectedDisaster] = useState();
   const [search, setSeach] = useState();
 
   const onChangeSearch = (value) => {
