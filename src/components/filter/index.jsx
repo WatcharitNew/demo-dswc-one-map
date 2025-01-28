@@ -38,11 +38,7 @@ const Filter = () => {
                   )}
                   onClick={() => {
                     if (isEnable) {
-                      if (isSelected) {
-                        setSelectedDisaster(undefined);
-                      } else {
-                        setSelectedDisaster(item.value);
-                      }
+                      setSelectedDisaster(isSelected ? undefined : item.value);
                     }
                   }}
                 >
