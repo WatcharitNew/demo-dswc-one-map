@@ -8,7 +8,7 @@ export const MapLabel = ({ selectedDisaster, selectedInformation }) => {
   return (
     <Flex className="flex-col items-end gap-3 py-2 px-6 bg-white rounded-md">
       <Transition
-        mounted={selectedDisaster.includes("flood")}
+        mounted={selectedDisaster === "flood"}
         transition="fade-right"
         duration={400}
         timingFunction="ease"
@@ -30,7 +30,7 @@ export const MapLabel = ({ selectedDisaster, selectedInformation }) => {
       </Transition>
 
       <Transition
-        mounted={selectedDisaster.includes("mudslide")}
+        mounted={selectedDisaster === "mudslide"}
         transition="fade-right"
         duration={400}
         timingFunction="ease"

@@ -7,6 +7,7 @@ import {
   DISASTER_TYPE,
   DISTRICT_OPTIONS,
   SUBDISTRICT_OPTIONS,
+  DISASTER_TYPE_ENABLE,
 } from "../../constants/index";
 import Level from "./Level";
 
@@ -21,7 +22,8 @@ const Filter = () => {
           <Level />
           <div className="row gap-2">
             {DISASTER_TYPE.map((item) => {
-              const isSelected = selectedDisaster.includes(item.value);
+              const isSelected = selectedDisaster === item.value;
+              const isEnable = DISASTER_TYPE_ENABLE.includes(item.value);
               return (
                 <Button
                   key={item.value}
@@ -31,15 +33,12 @@ const Filter = () => {
                     {
                       "text-blue-500 font-[500] border-blue-100 bg-blue-100":
                         isSelected,
+                      "cursor-default": !isEnable,
                     }
                   )}
                   onClick={() => {
-                    if (isSelected) {
-                      setSelectedDisaster(
-                        selectedDisaster.filter((j) => j !== item.value)
-                      );
-                    } else {
-                      setSelectedDisaster(selectedDisaster.concat(item.value));
+                    if (isEnable) {
+                      setSelectedDisaster(isSelected ? undefined : item.value);
                     }
                   }}
                 >
@@ -53,7 +52,7 @@ const Filter = () => {
           ข้อมูล​ ณ วันที่ 29 ต.ค. 2024 - 4 พ.ย. 2024
         </p>
       </div>
-      <div className="col gap-1 absolute left-[684px] top-[144px] z-30">
+      <div className="col gap-1 absolute left-[784px] top-[144px] z-30">
         <Select
           value={search?.district ?? null}
           withCheckIcon={false}
