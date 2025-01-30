@@ -3,7 +3,7 @@ import { Button, createTheme, Select } from "@mantine/core";
 import buttonClass from "./Button.module.css";
 
 const theme = createTheme({
-  fontFamily: 'Kanit',
+  fontFamily: "Kanit",
   components: {
     Button: Button.extend({
       classNames: buttonClass,
@@ -11,9 +11,10 @@ const theme = createTheme({
     Select: Select.extend({
       styles: {
         input: {
-          borderRadius: "0.5rem"
-        }
-      }
+          borderRadius: "0.5rem",
+          opacity: 1,
+        },
+      },
     }),
   },
 });

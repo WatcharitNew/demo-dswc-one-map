@@ -6,10 +6,15 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/icons/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/icons/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "map-gradient":
+          "linear-gradient(180deg, #F4F9FD 0%, rgba(244, 249, 253, 0.2) 100%)",
+      },
+
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

@@ -12,7 +12,7 @@ export const MapFilter = () => {
     useContext(MapFilterContext);
 
   return (
-    <div className="w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto absolute top-10 left-4">
+    <div className="w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto absolute top-10 left-4 z-20">
       <MapFilterComponent
         filterData={FILTER_DATA}
         filterValues={filterValues}
