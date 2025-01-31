@@ -62,7 +62,7 @@ export const FILTER_DATA = {
       },
       {
         type: 'switch',
-        label: 'ทรัพยากรณ์ช่วยเหลือ',
+        label: 'ทรัพยากรช่วยเหลือ',
         data: null
       }
     ]
@@ -117,7 +117,7 @@ export const FILTER_DATA = {
       },
       {
         type: 'switch',
-        label: 'ทรัพยากรณ์ช่วยเหลือ',
+        label: 'ทรัพยากรช่วยเหลือ',
         data: null
       }
     ]
