@@ -27,7 +27,7 @@ const Level = () => {
               })}
               onClick={() => handleChangeSearch({ level: item })}
             >
-              {item.label}aa
+              {item.label}
             </button>
           </li>
         );
