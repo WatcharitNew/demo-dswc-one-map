@@ -10,10 +10,12 @@ import {
   DISASTER_TYPE_ENABLE,
 } from "../../constants/index";
 import Level from "./Level";
+import { MapFilterContext } from "@/contexts/mapFilterContext";
 
 const Filter = () => {
   const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
     useContext(MainContext);
+  const { setFilterValues } = useContext(MapFilterContext)
 
   return (
     <div className="col bg-blue-50 items-center ml-4 z-50">
@@ -38,6 +40,7 @@ const Filter = () => {
                   )}
                   onClick={() => {
                     if (isEnable) {
+                      setFilterValues({})
                       setSelectedDisaster(isSelected ? undefined : item.value);
                     }
                   }}

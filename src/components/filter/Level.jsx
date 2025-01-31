@@ -4,9 +4,16 @@ import { MainContext } from "@/contexts/mainContext";
 
 import "./index.css";
 import clsx from "clsx";
+import { MapFilterContext } from "@/contexts/mapFilterContext";
 
 const Level = () => {
   const { search, onChangeSearch } = useContext(MainContext);
+  const { setFilterValues } = useContext(MapFilterContext)
+
+  const handleChangeSearch = (data) => {
+    setFilterValues({})
+    onChangeSearch(data)
+  }
 
   return (
     <ul className="circle">
@@ -18,9 +25,9 @@ const Level = () => {
               className={clsx(`text ease-in duration-200`, {
                 "text-selected": isMatch,
               })}
-              onClick={() => onChangeSearch({ level: item })}
+              onClick={() => handleChangeSearch({ level: item })}
             >
-              {item.label}
+              {item.label}aa
             </button>
           </li>
         );
@@ -28,7 +35,7 @@ const Level = () => {
       {search?.level?.label ? (
         <p
           className="color-black z-10 text-[18px] font-[500] cursor-pointer"
-          onClick={() => onChangeSearch({ level: undefined })}
+          onClick={() => handleChangeSearch({ level: undefined })}
         >
           {search?.level?.label}
         </p>
