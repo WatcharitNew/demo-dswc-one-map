@@ -1,56 +1,128 @@
 import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
 
 export const FILTER_DATA = {
-  disasterArea: {
-    type: "radio",
-    label: "พื้นที่เกิดภัย",
-    data: [
-      "วันนี้",
-      "คาดการณ์ 1 วัน",
-      "คาดการณ์ 2 วัน",
-      "คาดการณ์ 3 วัน",
-      "คาดการณ์ 5 วัน",
-      "พื้นที่ที่ได้รับความเสียหาย",
+  flood: {
+    watchOut: [
+      {
+        type: 'radio',
+        label: 'คาดการณ์การเกิดภัย',
+        data: [
+          "คาดการณ์ 1 วัน",
+          "คาดการณ์ 2 วัน",
+          "คาดการณ์ 3 วัน"
+        ]
+      },
+      {
+        type: 'switch',
+        label: 'ข้อมูลเขื่อน',
+        data: null
+      },
+      {
+        type: 'switch',
+        label: 'ข้อมูลน้ำท่า',
+        data: null
+      },
+      {
+        type: 'switch',
+        label: 'ปริมาณฝน',
+        data: null
+      },
+      {
+        type: 'switch',
+        label: 'ศูนย์พักพิง',
+        data: null
+      },
     ],
-  },
-  disasterFactors: {
-    type: "switch",
-    label: "ปัจจัยการเกิดภัย",
-    data: ["ปริมาณน้ำฝน", "ปริมาณน้ำเขื่อน", "ปริมาณน้ำท่า", "ความชื้นดิน"],
-  },
-  populationData: {
-    type: "switch",
-    label: "ข้อมูลประชากร",
-    data: ["ประชาชน", "ครัวเรือน"],
-  },
-  importentPlace: {
-    type: "switch",
-    label: "สถานที่สําคัญ",
-    data: [
-      "ศูนย์พักพิง",
-      "พื้นที่การเกษตร",
-      "สำนักงานเขต ปภ.",
-      "ปภ. จังหวัด",
-      "เสาวิทยุสื่อสาร",
-      "หน่วยงานราชการ",
-      "โรงเรียน",
-      "โรงพยาบาล",
-      "สถานบริการน้ำมัน",
+    handle: [
+      {
+        type: 'switch',
+        label: 'ปัจจัยการเกิดภัย',
+        data: [
+          'คาดการณ์พายุ',
+          'ข้อมูลเขื่อน',
+          'ข้อมูลน้ำท่า',
+          'ปริมาณฝน'
+        ]
+      },
+      {
+        type: 'switch',
+        label: 'สถานที่สำคัญ',
+        data: [
+          'ศูนย์พักพิง'
+        ]
+      }
     ],
+    restore: [
+      {
+        type: 'switch',
+        label: 'สถานที่สำคัญ',
+        data: [
+          'พื้นที่การเกษตร'
+        ]
+      },
+      {
+        type: 'switch',
+        label: 'ทรัพยากรช่วยเหลือ',
+        data: null
+      }
+    ]
   },
-  resources: {
-    type: "switch",
-    label: "ทรัพยากร",
-    data: [
-      "รถปฏิบัติการ",
-      "รถบรรทุก",
-      "เรือปฏิบัติการ",
-      "เครื่องสูบน้ำ",
-      "การช่วยเหลือทางการเกษตร",
-      "เครื่องมือปฏิบัติการอื่นๆ",
+  'PM2.5': {
+    watchOut: [
+      {
+        type: 'radio',
+        label: 'คาดการณ์การเกิดภัย',
+        data: [
+          "คาดการณ์ 1 วัน",
+          "คาดการณ์ 2 วัน",
+          "คาดการณ์ 3 วัน"
+        ]
+      },
+      {
+        type: 'switch',
+        label: 'ปัจจัยการเกิดภัย',
+        data: [
+          'hotspot',
+          'น้ำฝน'
+        ]
+      }
     ],
-  },
-};
+    handle: [
+      {
+        type: 'switch',
+        label: 'ข้อมูล pm2.5',
+        data: null
+      },
+      {
+        type: 'switch',
+        label: 'ข้อมูลทรัพยากร',
+        data: null
+      },
+      {
+        type: 'switch',
+        label: 'ปัจจัยการเกิดภัย',
+        data: [
+          'hotspot',
+          'น้ำฝน'
+        ]
+      }
+    ],
+    restore: [
+      {
+        type: 'switch',
+        label: 'สถานที่สำคัญ',
+        data: [
+          'พื้นที่การเกษตร'
+        ]
+      },
+      {
+        type: 'switch',
+        label: 'ทรัพยากรช่วยเหลือ',
+        data: null
+      }
+    ]
+  }
+}
 
 export const DISASTERS = [
   {

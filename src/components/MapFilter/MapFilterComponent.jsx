@@ -56,41 +56,68 @@ const MapFilterComponent = ({
           />
         </MenuTarget>
         <MenuDropdown className="max-h-[34rem] overflow-y-auto">
-          {Object.entries(filterData).map(([key, { type, label, data }]) => (
-            <NavLink
-              key={key}
-              label={<span className="text-gray-900 text-base">{label}</span>}
-              opened={true}
-              childrenOffset={0}
-              disableRightSectionRotation={true}
-              rightSection={<div />}
-              disabled
-              classNames={{
-                root: "opacity-100",
-              }}
-            >
-              {data.map((value, index) =>
+          {filterData.map(({ type, label, data }) => {
+            if (!data){
+              return (
                 type === "radio" ? (
                   <MapFilterRadio
-                    key={value}
-                    label={value}
-                    checked={filterValues.disasterArea === value}
-                    onChange={() => handleRadioChange(value)}
-                    defaultOpened={index == 0}
+                    key={label}
+                    label={label}
+                    checked={filterValues?.[label]?.[label] ?? false}
+                    onChange={(checked) =>
+                      handleRadioChange(label, label, checked)
+                    }
                   />
                 ) : (
                   <MapFilterSwitch
-                    key={value}
-                    label={value}
-                    checked={filterValues[key]?.[value] || false}
+                    key={label}
+                    label={label}
+                    checked={filterValues?.[label]?.[label] ?? false}
                     onChange={(checked) =>
-                      handleSwitchChange(key, value, checked)
+                      handleSwitchChange(label, label, checked)
                     }
+                    labelClassName="text-gray-900 text-base"
                   />
                 )
-              )}
-            </NavLink>
-          ))}
+              )
+            }
+
+            return (
+              <NavLink
+                key={label}
+                label={<span className="text-gray-900 text-base">{label}</span>}
+                opened={true}
+                childrenOffset={0}
+                disableRightSectionRotation={true}
+                rightSection={<div />}
+                disabled
+                classNames={{
+                  root: "opacity-100",
+                }}
+              >
+                {data.map((value, index) =>
+                  type === "radio" ? (
+                    <MapFilterRadio
+                      key={value}
+                      label={value}
+                      checked={filterValues?.[label]?.[value] ?? false}
+                      onChange={(checked) =>
+                        handleRadioChange(label, value, checked)
+                      }
+                    />
+                  ) : (
+                    <MapFilterSwitch
+                      key={value}
+                      label={value}
+                      checked={filterValues?.[label]?.[value] ?? false}
+                      onChange={(checked) =>
+                        handleSwitchChange(label, value, checked)
+                      }
+                    />
+                  )
+                )}
+              </NavLink>
+          )})}
         </MenuDropdown>
       </Menu>
     </MantineProvider>
