@@ -13,7 +13,7 @@ export const MapFilter = () => {
     useContext(MapFilterContext);
   const { selectedDisaster, search } =
       useContext(MainContext);
-  const filterData = FILTER_DATA[selectedDisaster || DISASTER_TYPE[0].value][search?.level?.value || LEVEL[0].value]
+  const filterData = FILTER_DATA[selectedDisaster || DISASTER_TYPE[0].value][search?.level?.value || LEVEL[2].value]
 
   return (
     <div className="w-fit bg-white rounded-lg max-h-[80vh] overflow-y-auto absolute top-10 left-4">

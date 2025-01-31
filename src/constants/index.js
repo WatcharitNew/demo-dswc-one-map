@@ -2,7 +2,7 @@ import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
 
 export const FILTER_DATA = {
   flood: {
-    handle: [
+    watchOut: [
       {
         type: 'radio',
         label: 'คาดการณ์การเกิดภัย',
@@ -33,7 +33,7 @@ export const FILTER_DATA = {
         data: null
       },
     ],
-    watchOut: [
+    handle: [
       {
         type: 'switch',
         label: 'ปัจจัยการเกิดภัย',
@@ -68,7 +68,7 @@ export const FILTER_DATA = {
     ]
   },
   'PM2.5': {
-    handle: [
+    watchOut: [
       {
         type: 'radio',
         label: 'คาดการณ์การเกิดภัย',
@@ -87,7 +87,7 @@ export const FILTER_DATA = {
         ]
       }
     ],
-    watchOut: [
+    handle: [
       {
         type: 'switch',
         label: 'ข้อมูล pm2.5',
