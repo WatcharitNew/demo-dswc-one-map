@@ -5,11 +5,7 @@ import { createContext, useState, useCallback } from "react";
 export const MapFilterContext = createContext(null);
 
 const MapFilterContextProvider = ({ children }) => {
-  const [filterValues, setFilterValues] = useState({
-    disasterArea: "วันนี้",
-    disasterFactors: {},
-    populationData: {},
-  });
+  const [filterValues, setFilterValues] = useState({});
 
   const updateMapLayers = useCallback(async (newFilters) => {
     // TODO: call BE API
@@ -17,10 +13,12 @@ const MapFilterContextProvider = ({ children }) => {
   }, []);
 
   const handleRadioChange = useCallback(
-    (value) => {
+    (section, value, checked) => {
       const newFilters = {
         ...filterValues,
-        disasterArea: value,
+        [section]: {
+          [value]: checked,
+        },
       };
       setFilterValues(newFilters);
       updateMapLayers(newFilters);
@@ -45,6 +43,7 @@ const MapFilterContextProvider = ({ children }) => {
 
   const contextValue = {
     filterValues,
+    setFilterValues,
     handleRadioChange,
     handleSwitchChange,
   };
