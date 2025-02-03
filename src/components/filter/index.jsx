@@ -1,7 +1,7 @@
 "use client";
 import React, { useContext } from "react";
 import { Button, Select } from "@mantine/core";
-import { MainContext } from "@/contexts/mainContext";
+import { MapFilterContext } from "@/contexts/mapFilterContext";
 import clsx from "clsx";
 import {
   DISASTER_TYPE,
@@ -10,11 +10,10 @@ import {
   DISASTER_TYPE_ENABLE,
 } from "../../constants/index";
 import Level from "./Level";
-import { MapFilterContext } from "@/contexts/mapFilterContext";
 
 const Filter = () => {
   const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
-    useContext(MainContext);
+    useContext(MapFilterContext);
   const { setFilterValues } = useContext(MapFilterContext);
 
   return (

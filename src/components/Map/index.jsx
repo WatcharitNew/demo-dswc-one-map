@@ -6,6 +6,7 @@ import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Zoom from "@arcgis/core/widgets/Zoom";
 import Expand from "@arcgis/core/widgets/Fullscreen";
 import "./index.css";
+import { LAYER_RUL } from "@/constants";
 
 export const ArcgisMap = () => {
   const mapRef = useRef(null);
@@ -20,33 +21,15 @@ export const ArcgisMap = () => {
         container: mapRef.current,
         map: map,
         center: [100.11, 14.47],
-        zoom: 10,
+        zoom: 9,
       });
 
-      const featureLayer1 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+      LAYER_RUL.forEach((url) => {
+        const featureLayer = new FeatureLayer({
+          url: url,
+        });
+        map.add(featureLayer);
       });
-      const featureLayer2 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
-      });
-      const featureLayer3 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
-      });
-      const featureLayer4 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
-      });
-      const featureLayer5 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-      });
-      const featureLayer6 = new FeatureLayer({
-        url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
-      });
-
-      map.add(featureLayer1);
-      map.add(featureLayer2);
-      map.add(featureLayer3);
-      map.add(featureLayer4);
-      map.add(featureLayer5);
 
       const zoomWidget = new Zoom({
         view: view,

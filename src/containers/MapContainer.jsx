@@ -1,14 +1,12 @@
 "use client";
 
 import { useContext, useMemo } from "react";
-import { MainContext } from "@/contexts/mainContext";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
 import { MapLabel, ArcgisMap } from "@/components";
 import { MapFilter } from ".";
 
 export const MapContainer = () => {
-  const { selectedDisaster } = useContext(MainContext);
-  const { filterValues } = useContext(MapFilterContext);
+  const { filterValues, selectedDisaster } = useContext(MapFilterContext);
 
   const selectedInformation = useMemo(() => {
     const importentKeys = Object.keys(filterValues.importentPlace || {}).filter(
