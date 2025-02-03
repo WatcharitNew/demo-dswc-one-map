@@ -15,7 +15,7 @@ import { MapFilterContext } from "@/contexts/mapFilterContext";
 const Filter = () => {
   const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
     useContext(MainContext);
-  const { setFilterValues } = useContext(MapFilterContext)
+  const { setFilterValues } = useContext(MapFilterContext);
 
   return (
     <div className="col bg-blue-50 items-center ml-4 z-50">
@@ -40,7 +40,7 @@ const Filter = () => {
                   )}
                   onClick={() => {
                     if (isEnable) {
-                      setFilterValues({})
+                      setFilterValues({});
                       setSelectedDisaster(isSelected ? undefined : item.value);
                     }
                   }}
@@ -55,7 +55,7 @@ const Filter = () => {
           ข้อมูล​ ณ วันที่ 29 ต.ค. 2024 - 4 พ.ย. 2024
         </p>
       </div>
-      <div className="col gap-1 absolute left-[784px] top-[144px] z-30">
+      <div className="col gap-1 absolute left-[950px] top-[141px] z-30">
         <Select
           value={search?.district ?? null}
           withCheckIcon={false}
