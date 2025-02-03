@@ -43,5 +43,7 @@ export const ArcgisMap = () => {
     }
   }, [mapRef]);
 
-  return <div className="w-full max-h-[42rem] h-[42rem]" ref={mapRef}></div>;
+  return (
+    <div className="map w-full max-h-[46rem] h-[46rem]" ref={mapRef}></div>
+  );
 };
