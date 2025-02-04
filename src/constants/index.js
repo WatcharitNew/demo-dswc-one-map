@@ -99,6 +99,13 @@ export const FILTER_DATA = {
   },
 };
 
+export const mapLayer = {
+  0: ["น้ำฝน", "ปริมาณฝน", "ข้อมูล pm2.5"],
+  1: ["คาดการณ์ 2 วัน", "ข้อมูลน้ำท่า", "พื้นที่การเกษตร"],
+  2: ["คาดการณ์ 3 วัน", "ข้อมูลทรัพยากร"],
+  3: ["คาดการณ์ 1 วัน", "ทรัพยากรช่วยเหลือ", "ข้อมูลเขื่อน"],
+  4: ["hotspot", "ศูนย์พักพิง", "คาดการณ์พายุ"],
+};
 export const DISASTERS = [
   {
     srcName: "disaster-flood",
@@ -151,37 +158,20 @@ export const DISASTER_TYPE = [
 
 export const DISASTER_TYPE_ENABLE = ["flood", "PM2.5"];
 
-export const DISTRICT_OPTIONS = [
+export const PROVINCE_OPTIONS = [
   {
-    label: "แม่สาย",
-    value: "maeSai",
-  },
-  {
-    label: "เมือง",
-    value: "muang",
-  },
-  {
-    label: "เวียงชัย",
-    value: "wiangChai",
-  },
-  {
-    label: "แม่ลาว",
-    value: "maeLao",
-  },
-  {
-    label: "แม่จัน",
-    value: "maeChun",
+    label: "สุพรรณบุรี",
+    value: "สุพรรณบุรี",
+    location: [100.11, 14.47],
   },
 ];
 
-export const SUBDISTRICT_OPTIONS = [
+export const AMPHOE_OPTIONS = [
   {
-    label: "แม่สาย",
-    value: "maeSai",
+    label: "สุพรรณบุรี",
+    value: "สุพรรณบุรี",
+    location: [100.11, 14.47],
   },
-  { label: "ห้วยไคร้", value: "huaiKhrai" },
-  { label: "เกาะช้าง", value: "koChang" },
-  { label: "ศรีเมืองชุม", value: "sriMueangChum" },
 ];
 
 export const LEVEL = [
@@ -278,6 +268,13 @@ export const INFORMATION = [
     title: "ศูนย์พักพิง",
   },
 ];
+
+export const DOMAIN =
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/";
+
+export const defaultLayer = {
+  สุพรรณบุรี: [5],
+};
 
 export const LAYER_RUL = [
   "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
