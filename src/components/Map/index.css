@@ -1,5 +1,10 @@
 @import url("https://js.arcgis.com/4.22/esri/themes/light/main.css");
 
+.map {
+  font-family: Arial;
+  font-weight: regular;
+}
+
 .esri-ui-top-left {
   display: none;
 }

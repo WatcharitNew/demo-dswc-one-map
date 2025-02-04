@@ -5,10 +5,10 @@ import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Zoom from "@arcgis/core/widgets/Zoom";
 import Expand from "@arcgis/core/widgets/Fullscreen";
-import "./index.css";
 import { LAYER_RUL } from "@/constants";
+import "./index.css";
 
-export const ArcgisMap = () => {
+const ArcgisMap = () => {
   const mapRef = useRef(null);
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export const ArcgisMap = () => {
       const expandWidget = new Expand({
         view: view,
       });
+
       view.ui.add(zoomWidget, "top-right");
       view.ui.add(expandWidget, "top-right");
     }
@@ -47,3 +48,5 @@ export const ArcgisMap = () => {
     <div className="map w-full max-h-[46rem] h-[46rem]" ref={mapRef}></div>
   );
 };
+
+export default ArcgisMap;

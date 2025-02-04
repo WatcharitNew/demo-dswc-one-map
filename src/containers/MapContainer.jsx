@@ -1,9 +1,19 @@
 "use client";
 
 import { useContext, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
-import { MapLabel, ArcgisMap } from "@/components";
+import { MapLabel } from "@/components";
+
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
 import { MapFilter } from ".";
+
+const ArcgisMap = dynamic(() => import("../components/Map"), {
+  ssr: false,
+});
 
 export const MapContainer = () => {
   const { filterValues, selectedDisaster } = useContext(MapFilterContext);
