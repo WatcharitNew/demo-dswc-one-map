@@ -8,3 +8,37 @@
 .esri-ui-top-left {
   display: none;
 }
+
+.esri-component {
+  margin-bottom: 0 !important;
+  background-color: white;
+}
+.esri-component:first-child {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+.esri-component:first-child > calcite-button:first-child {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.esri-component:last-child {
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.esri-component:last-child > calcite-button {
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+}
+
+.esri-widget--button {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border: none;
+}
+
+.esri-widget--button:focus {
+  outline: none;
+}
