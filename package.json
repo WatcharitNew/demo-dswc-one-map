@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@arcgis/core": "^4.31.6",
     "@mantine/core": "^7.16.0",
     "@mantine/hooks": "^7.16.0",
     "@tanstack/react-query": "^5.64.1",

@@ -6,6 +6,12 @@ export const MapFilterContext = createContext(null);
 
 const MapFilterContextProvider = ({ children }) => {
   const [filterValues, setFilterValues] = useState({});
+  const [selectedDisaster, setSelectedDisaster] = useState();
+  const [search, setSeach] = useState();
+
+  const onChangeSearch = (value) => {
+    setSeach((prev) => ({ ...prev, ...value }));
+  };
 
   const updateMapLayers = useCallback(async (newFilters) => {
     // TODO: call BE API
@@ -46,6 +52,10 @@ const MapFilterContextProvider = ({ children }) => {
     setFilterValues,
     handleRadioChange,
     handleSwitchChange,
+    selectedDisaster,
+    setSelectedDisaster,
+    search,
+    onChangeSearch,
   };
 
   return (

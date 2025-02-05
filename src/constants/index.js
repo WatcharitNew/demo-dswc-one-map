@@ -4,125 +4,100 @@ export const FILTER_DATA = {
   flood: {
     watchOut: [
       {
-        type: 'radio',
-        label: 'คาดการณ์การเกิดภัย',
-        data: [
-          "คาดการณ์ 1 วัน",
-          "คาดการณ์ 2 วัน",
-          "คาดการณ์ 3 วัน"
-        ]
+        type: "radio",
+        label: "คาดการณ์การเกิดภัย",
+        data: ["คาดการณ์ 1 วัน", "คาดการณ์ 2 วัน", "คาดการณ์ 3 วัน"],
       },
       {
-        type: 'switch',
-        label: 'ข้อมูลเขื่อน',
-        data: null
+        type: "switch",
+        label: "ข้อมูลเขื่อน",
+        data: null,
       },
       {
-        type: 'switch',
-        label: 'ข้อมูลน้ำท่า',
-        data: null
+        type: "switch",
+        label: "ข้อมูลน้ำท่า",
+        data: null,
       },
       {
-        type: 'switch',
-        label: 'ปริมาณฝน',
-        data: null
+        type: "switch",
+        label: "ปริมาณฝน",
+        data: null,
       },
       {
-        type: 'switch',
-        label: 'ศูนย์พักพิง',
-        data: null
+        type: "switch",
+        label: "ศูนย์พักพิง",
+        data: null,
       },
     ],
     handle: [
       {
-        type: 'switch',
-        label: 'ปัจจัยการเกิดภัย',
-        data: [
-          'คาดการณ์พายุ',
-          'ข้อมูลเขื่อน',
-          'ข้อมูลน้ำท่า',
-          'ปริมาณฝน'
-        ]
+        type: "switch",
+        label: "ปัจจัยการเกิดภัย",
+        data: ["คาดการณ์พายุ", "ข้อมูลเขื่อน", "ข้อมูลน้ำท่า", "ปริมาณฝน"],
       },
       {
-        type: 'switch',
-        label: 'สถานที่สำคัญ',
-        data: [
-          'ศูนย์พักพิง'
-        ]
-      }
+        type: "switch",
+        label: "สถานที่สำคัญ",
+        data: ["ศูนย์พักพิง"],
+      },
     ],
     restore: [
       {
-        type: 'switch',
-        label: 'สถานที่สำคัญ',
-        data: [
-          'พื้นที่การเกษตร'
-        ]
+        type: "switch",
+        label: "สถานที่สำคัญ",
+        data: ["พื้นที่การเกษตร"],
       },
       {
-        type: 'switch',
-        label: 'ทรัพยากรช่วยเหลือ',
-        data: null
-      }
-    ]
+        type: "switch",
+        label: "ทรัพยากรช่วยเหลือ",
+        data: null,
+      },
+    ],
   },
-  'PM2.5': {
+  "PM2.5": {
     watchOut: [
       {
-        type: 'radio',
-        label: 'คาดการณ์การเกิดภัย',
-        data: [
-          "คาดการณ์ 1 วัน",
-          "คาดการณ์ 2 วัน",
-          "คาดการณ์ 3 วัน"
-        ]
+        type: "radio",
+        label: "คาดการณ์การเกิดภัย",
+        data: ["คาดการณ์ 1 วัน", "คาดการณ์ 2 วัน", "คาดการณ์ 3 วัน"],
       },
       {
-        type: 'switch',
-        label: 'ปัจจัยการเกิดภัย',
-        data: [
-          'hotspot',
-          'น้ำฝน'
-        ]
-      }
+        type: "switch",
+        label: "ปัจจัยการเกิดภัย",
+        data: ["hotspot", "น้ำฝน"],
+      },
     ],
     handle: [
       {
-        type: 'switch',
-        label: 'ข้อมูล pm2.5',
-        data: null
+        type: "switch",
+        label: "ข้อมูล pm2.5",
+        data: null,
       },
       {
-        type: 'switch',
-        label: 'ข้อมูลทรัพยากร',
-        data: null
+        type: "switch",
+        label: "ข้อมูลทรัพยากร",
+        data: null,
       },
       {
-        type: 'switch',
-        label: 'ปัจจัยการเกิดภัย',
-        data: [
-          'hotspot',
-          'น้ำฝน'
-        ]
-      }
+        type: "switch",
+        label: "ปัจจัยการเกิดภัย",
+        data: ["hotspot", "น้ำฝน"],
+      },
     ],
     restore: [
       {
-        type: 'switch',
-        label: 'สถานที่สำคัญ',
-        data: [
-          'พื้นที่การเกษตร'
-        ]
+        type: "switch",
+        label: "สถานที่สำคัญ",
+        data: ["พื้นที่การเกษตร"],
       },
       {
-        type: 'switch',
-        label: 'ทรัพยากรช่วยเหลือ',
-        data: null
-      }
-    ]
-  }
-}
+        type: "switch",
+        label: "ทรัพยากรช่วยเหลือ",
+        data: null,
+      },
+    ],
+  },
+};
 
 export const DISASTERS = [
   {
@@ -302,4 +277,13 @@ export const INFORMATION = [
     key: "shelter",
     title: "ศูนย์พักพิง",
   },
+];
+
+export const LAYER_RUL = [
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
 ];

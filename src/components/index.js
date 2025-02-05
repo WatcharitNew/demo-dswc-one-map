@@ -1,2 +1,2 @@
-export * from './AppLayout'
-export * from './MapLabel'
+export * from "./AppLayout";
+export * from "./MapLabel";

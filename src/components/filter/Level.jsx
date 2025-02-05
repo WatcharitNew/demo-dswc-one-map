@@ -1,19 +1,17 @@
 import React, { useContext } from "react";
 import { LEVEL } from "../../constants/index";
-import { MainContext } from "@/contexts/mainContext";
-
+import { MapFilterContext } from "@/contexts/mapFilterContext";
 import "./index.css";
 import clsx from "clsx";
-import { MapFilterContext } from "@/contexts/mapFilterContext";
 
 const Level = () => {
-  const { search, onChangeSearch } = useContext(MainContext);
-  const { setFilterValues } = useContext(MapFilterContext)
+  const { setFilterValues, search, onChangeSearch } =
+    useContext(MapFilterContext);
 
   const handleChangeSearch = (data) => {
-    setFilterValues({})
-    onChangeSearch(data)
-  }
+    setFilterValues({});
+    onChangeSearch(data);
+  };
 
   return (
     <ul className="circle">
