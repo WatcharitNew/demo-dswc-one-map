@@ -26,7 +26,7 @@ const ArcgisMap = () => {
       }
       return `${url}/?${params.toString()}`;
     },
-    [search]
+    [search.province, search.amphoe]
   );
 
   const map = useMemo(
@@ -72,10 +72,13 @@ const ArcgisMap = () => {
         key: Number(url),
       };
     });
-  }, [formatQuery, map]);
+  }, [map, formatQuery]);
 
   // map filterValues with layer id
   const layer = useMemo(() => {
+    if (Object.values(filterValues).length === 0) {
+      return [];
+    }
     const result = Object.values(filterValues)
       .flatMap((obj) => Object.entries(obj))
       .filter(([_, value]) => value === true)

@@ -64,16 +64,8 @@ const Filter = () => {
           withCheckIcon={false}
           placeholder="เลือกจังหวัด"
           data={PROVINCE_OPTIONS}
-          clearable={true}
           onChange={(_value, option) => {
-            if (option) {
-              onChangeSearch({ province: option });
-            } else {
-              onChangeSearch({
-                province: undefined,
-                amphoe: undefined,
-              });
-            }
+            option && onChangeSearch({ province: option });
           }}
         />
         <Select
@@ -82,7 +74,17 @@ const Filter = () => {
           placeholder="เลือกตำบล"
           data={AMPHOE_OPTIONS}
           disabled={search?.province === undefined}
-          onChange={(value, option) => onChangeSearch({ amphoe: option })}
+          clearable
+          onChange={(_value, option) => {
+            if (option) {
+              onChangeSearch({ amphoe: option });
+            } else {
+              onChangeSearch({
+                ...search,
+                amphoe: undefined,
+              });
+            }
+          }}
         />
       </div>
     </div>
