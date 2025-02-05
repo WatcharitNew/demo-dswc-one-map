@@ -1,5 +1,6 @@
 "use client";
 
+import { PROVINCE_OPTIONS } from "@/constants";
 import { createContext, useState, useCallback } from "react";
 
 export const MapFilterContext = createContext(null);
@@ -7,7 +8,9 @@ export const MapFilterContext = createContext(null);
 const MapFilterContextProvider = ({ children }) => {
   const [filterValues, setFilterValues] = useState({});
   const [selectedDisaster, setSelectedDisaster] = useState();
-  const [search, setSeach] = useState();
+  const [search, setSeach] = useState({
+    province: PROVINCE_OPTIONS?.[0],
+  });
 
   const onChangeSearch = (value) => {
     setSeach((prev) => ({ ...prev, ...value }));

@@ -4,6 +4,11 @@ import { useContext, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
 import { MapLabel } from "@/components";
+
+export default function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
+
 import { MapFilter } from ".";
 
 const ArcgisMap = dynamic(() => import("../components/Map"), {
@@ -25,7 +30,7 @@ export const MapContainer = () => {
   }, [filterValues]);
 
   return (
-    <div className="bg-white p-3">
+    <div className="bg-white">
       <div className="w-full h-[46rem] relative">
         <ArcgisMap />
         <MapFilter />

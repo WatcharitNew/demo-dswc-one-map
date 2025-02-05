@@ -5,16 +5,20 @@ import { MapFilterContext } from "@/contexts/mapFilterContext";
 import clsx from "clsx";
 import {
   DISASTER_TYPE,
-  DISTRICT_OPTIONS,
-  SUBDISTRICT_OPTIONS,
+  PROVINCE_OPTIONS,
+  AMPHOE_OPTIONS,
   DISASTER_TYPE_ENABLE,
 } from "../../constants/index";
 import Level from "./Level";
 
 const Filter = () => {
-  const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
-    useContext(MapFilterContext);
-  const { setFilterValues } = useContext(MapFilterContext);
+  const {
+    selectedDisaster,
+    setSelectedDisaster,
+    search,
+    onChangeSearch,
+    setFilterValues,
+  } = useContext(MapFilterContext);
 
   return (
     <div className="col bg-blue-50 items-center ml-4 z-50">
@@ -54,31 +58,33 @@ const Filter = () => {
           ข้อมูล​ ณ วันที่ 29 ต.ค. 2024 - 4 พ.ย. 2024
         </p>
       </div>
-      <div className="col gap-1 absolute left-[950px] top-[141px] z-30">
+      <div className="col gap-1 absolute left-[950px] top-[141px] z-30 min-w-40">
         <Select
-          value={search?.district ?? null}
+          value={search?.province?.value ?? null}
           withCheckIcon={false}
           placeholder="เลือกจังหวัด"
-          data={DISTRICT_OPTIONS}
-          clearable={true}
-          onChange={(value) => {
-            if (value) {
-              onChangeSearch({ district: value });
-            } else {
-              onChangeSearch({
-                district: undefined,
-                subdistrict: undefined,
-              });
-            }
+          data={PROVINCE_OPTIONS}
+          onChange={(_value, option) => {
+            option && onChangeSearch({ province: option });
           }}
         />
         <Select
-          value={search?.subdistrict ?? null}
+          value={search?.amphoe?.value ?? null}
           withCheckIcon={false}
           placeholder="เลือกตำบล"
-          data={SUBDISTRICT_OPTIONS}
-          disabled={search?.district === undefined}
-          onChange={(value) => onChangeSearch({ subdistrict: value })}
+          data={AMPHOE_OPTIONS}
+          disabled={search?.province === undefined}
+          clearable
+          onChange={(_value, option) => {
+            if (option) {
+              onChangeSearch({ amphoe: option });
+            } else {
+              onChangeSearch({
+                ...search,
+                amphoe: undefined,
+              });
+            }
+          }}
         />
       </div>
     </div>
