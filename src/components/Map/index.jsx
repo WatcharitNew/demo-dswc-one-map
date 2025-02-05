@@ -1,26 +1,18 @@
 "use client";
-import {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useContext, useEffect, useMemo, useRef } from "react";
 import Map from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Zoom from "@arcgis/core/widgets/Zoom";
 import Expand from "@arcgis/core/widgets/Fullscreen";
 import { defaultLayer, DOMAIN, mapLayer } from "@/constants";
-import "./index.css";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
+import "./index.css";
 
 const ArcgisMap = () => {
   const mapRef = useRef(null);
 
-  const { selectedDisaster, search, filterValues } =
-    useContext(MapFilterContext);
+  const { search, filterValues } = useContext(MapFilterContext);
 
   const formatQuery = useCallback(
     (url) => {
@@ -45,70 +37,76 @@ const ArcgisMap = () => {
     []
   );
 
-  const view = useMemo(() => {
-    if (mapRef?.current) {
-      return new MapView({
+  useEffect(() => {
+    if (mapRef.current) {
+      const mapView = new MapView({
         container: mapRef.current,
         map: map,
         center: search?.amphoe?.location || search?.province?.location,
         zoom: 9,
       });
-    }
-  }, [map, mapRef, search]);
 
-  const layer = useMemo(() => {
-    const result = Object.values(filterValues)
-      .flatMap((obj) => Object.entries(obj)) // Convert nested objects into key-value pairs
-      .filter(([_, value]) => value === true) // Keep only true values
-      .map(([key]) => key);
-    return Object.entries(mapLayer)
-      .filter(([_, values]) => values.some((value) => result.includes(value)))
-      .map(([key]) => Number(key))
-      .sort();
-  }, [filterValues]);
-
-  useEffect(() => {
-    if (mapRef.current && view) {
       const zoomWidget = new Zoom({
-        view: view,
+        view: mapView,
       });
 
       const expandWidget = new Expand({
-        view: view,
+        view: mapView,
       });
 
-      view.ui.add(zoomWidget, "top-right");
-      view.ui.add(expandWidget, "top-right");
-
-      defaultLayer?.[search?.province?.value].forEach((url) => {
-        const featureLayer = new FeatureLayer({
-          url: formatQuery(`${DOMAIN}${url}`),
-        });
-        map?.add(featureLayer);
-      });
-
-      if (layer) {
-        layer?.forEach((url) => {
-          const featureLayer = new FeatureLayer({
-            url: formatQuery(`${DOMAIN}${url}`),
-          });
-          map?.add(featureLayer);
-        });
-      }
+      mapView.ui.add(zoomWidget, "top-right");
+      mapView.ui.add(expandWidget, "top-right");
     }
-  }, [mapRef, search, defaultLayer, layer, view]);
+  }, [map, mapRef, search?.amphoe, search?.province]);
 
-  console.log("layer ", layer);
+  /// create all layer and add to map but hide it
+  const allFeatureLayer = useMemo(() => {
+    return Object.keys(mapLayer).map((url) => {
+      const layer = new FeatureLayer({
+        url: formatQuery(`${DOMAIN}${url}`),
+      });
+      map.add(layer);
+      layer.visible = false;
+      return {
+        layer: layer,
+        key: Number(url),
+      };
+    });
+  }, [formatQuery, map]);
 
-  // useEffect(() => {
-  //   layer?.forEach((url) => {
-  //     const featureLayer = new FeatureLayer({
-  //       url: formatQuery(`${DOMAIN}${url}`),
-  //     });
-  //     console.log("map", map);
-  //     map.add(featureLayer);
-  //   });
-  // }, [map, layer]);
+  // map filterValues with layer id
+  const layer = useMemo(() => {
+    const result = Object.values(filterValues)
+      .flatMap((obj) => Object.entries(obj))
+      .filter(([_, value]) => value === true)
+      .map(([key]) => key);
+
+    return Object.entries(mapLayer)
+      .filter(([_, values]) => values.some((value) => result.includes(value)))
+      .map(([key]) => Number(key))
+      .sort((a, b) => a - b);
+  }, [filterValues]);
+
+  // add default layer when change province or amphoe
+  useEffect(() => {
+    defaultLayer?.[search?.province?.value].forEach((url) => {
+      const featureLayer = new FeatureLayer({
+        url: formatQuery(`${DOMAIN}${url}`),
+      });
+      map?.add(featureLayer);
+    });
+  }, [formatQuery, map, search?.province]);
+
+  //show and hide layer depend on filterValues
+  useEffect(() => {
+    allFeatureLayer?.forEach((item) => {
+      if (layer.includes(item.key)) {
+        item.layer.visible = true;
+      } else {
+        item.layer.visible = false;
+      }
+    });
+  }, [layer, allFeatureLayer]);
 
   return (
     <div className="map w-full max-h-[46rem] h-[46rem]" ref={mapRef}></div>

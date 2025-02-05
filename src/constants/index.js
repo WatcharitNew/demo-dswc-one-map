@@ -101,10 +101,10 @@ export const FILTER_DATA = {
 
 export const mapLayer = {
   0: ["น้ำฝน", "ปริมาณฝน", "ข้อมูล pm2.5"],
-  1: ["คาดการณ์ 2 วัน", "ข้อมูลน้ำท่า", "พื้นที่การเกษตร"],
   2: ["คาดการณ์ 3 วัน", "ข้อมูลทรัพยากร"],
   3: ["คาดการณ์ 1 วัน", "ทรัพยากรช่วยเหลือ", "ข้อมูลเขื่อน"],
   4: ["hotspot", "ศูนย์พักพิง", "คาดการณ์พายุ"],
+  5: ["คาดการณ์ 2 วัน", "ข้อมูลน้ำท่า", "พื้นที่การเกษตร"],
 };
 export const DISASTERS = [
   {
@@ -273,7 +273,7 @@ export const DOMAIN =
   "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/";
 
 export const defaultLayer = {
-  สุพรรณบุรี: [5],
+  สุพรรณบุรี: [1],
 };
 
 export const LAYER_RUL = [
