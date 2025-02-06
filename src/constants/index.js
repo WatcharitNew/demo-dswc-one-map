@@ -162,7 +162,7 @@ export const PROVINCE_OPTIONS = [
   {
     label: "สุพรรณบุรี",
     value: "สุพรรณบุรี",
-    location: [100.11, 14.47],
+    location: [100.1326371, 14.5477289],
   },
 ];
 
@@ -170,7 +170,12 @@ export const AMPHOE_OPTIONS = [
   {
     label: "สุพรรณบุรี",
     value: "สุพรรณบุรี",
-    location: [100.11, 14.47],
+    location: [100.11, 14.484444],
+  },
+  {
+    label: "ด่านช้าง",
+    value: "ด่านช้าง",
+    location: [99.697222, 14.841667],
   },
 ];
 
