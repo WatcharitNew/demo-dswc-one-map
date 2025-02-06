@@ -92,7 +92,6 @@ const ArcgisMap = () => {
       .sort((a, b) => a - b);
   }, [filterValues]);
 
-  console.log("layer", layer);
   // add default layer when change province or amphoe
   useEffect(() => {
     defaultLayer?.[search?.province?.value].forEach((url) => {

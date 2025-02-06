@@ -21,8 +21,8 @@ const Filter = () => {
   } = useContext(MapFilterContext);
 
   return (
-    <div className="row bg-blue-50 items-center ml-4 z-50 mt-3">
-      <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-[2.75rem] pl-0 pr-[30px] rounded-l-[40px] ">
+    <div className="row bg-blue-50 items-center ml-4 z-50 mt-2">
+      <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-[1rem] pl-0 pr-[30px] rounded-l-[40px] ">
         <div className="row items-center gap-2 z-30">
           <Level />
           <div className="row gap-2">
