@@ -56,30 +56,28 @@ const MapFilterComponent = ({
           />
         </MenuTarget>
         <MenuDropdown className="max-h-[34rem] overflow-y-auto">
-          {filterData.map(({ type, label, data }) => {
-            if (!data){
-              return (
-                type === "radio" ? (
-                  <MapFilterRadio
-                    key={label}
-                    label={label}
-                    checked={filterValues?.[label]?.[label] ?? false}
-                    onChange={(checked) =>
-                      handleRadioChange(label, label, checked)
-                    }
-                  />
-                ) : (
-                  <MapFilterSwitch
-                    key={label}
-                    label={label}
-                    checked={filterValues?.[label]?.[label] ?? false}
-                    onChange={(checked) =>
-                      handleSwitchChange(label, label, checked)
-                    }
-                    labelClassName="text-gray-900 text-base"
-                  />
-                )
-              )
+          {filterData.map(({ type, label, data, layer, isDefault }) => {
+            if (!data) {
+              return type === "radio" ? (
+                <MapFilterRadio
+                  key={label}
+                  label={label}
+                  checked={filterValues?.[label]?.[label] ?? false}
+                  onChange={(checked) =>
+                    handleRadioChange(label, label, checked)
+                  }
+                />
+              ) : (
+                <MapFilterSwitch
+                  key={label}
+                  label={label}
+                  checked={filterValues?.[label]?.[label] ?? false}
+                  onChange={(checked) =>
+                    handleSwitchChange(label, label, checked, layer)
+                  }
+                  labelClassName="text-gray-900 text-base"
+                />
+              );
             }
 
             return (
@@ -95,29 +93,35 @@ const MapFilterComponent = ({
                   root: "opacity-100",
                 }}
               >
-                {data.map((value, index) =>
-                  type === "radio" ? (
+                {data.map((value) => {
+                  return type === "radio" ? (
                     <MapFilterRadio
-                      key={value}
-                      label={value}
-                      checked={filterValues?.[label]?.[value] ?? false}
+                      key={value.label}
+                      label={value.label}
+                      checked={filterValues?.[label]?.[value.label] ?? false}
                       onChange={(checked) =>
                         handleRadioChange(label, value, checked)
                       }
                     />
                   ) : (
                     <MapFilterSwitch
-                      key={value}
-                      label={value}
-                      checked={filterValues?.[label]?.[value] ?? false}
+                      key={value.label}
+                      label={value.label}
+                      checked={filterValues?.[label]?.[value.label] ?? false}
                       onChange={(checked) =>
-                        handleSwitchChange(label, value, checked)
+                        handleSwitchChange(
+                          label,
+                          value.label,
+                          checked,
+                          value.layer
+                        )
                       }
                     />
-                  )
-                )}
+                  );
+                })}
               </NavLink>
-          )})}
+            );
+          })}
         </MenuDropdown>
       </Menu>
     </MantineProvider>

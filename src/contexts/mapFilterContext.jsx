@@ -1,7 +1,7 @@
 "use client";
 
-import { PROVINCE_OPTIONS } from "@/constants";
-import { createContext, useState, useCallback } from "react";
+import { MAP_OPTIONS, DEFAULT_FILTER_DATA } from "@/constants";
+import { createContext, useState, useCallback, useEffect } from "react";
 
 export const MapFilterContext = createContext(null);
 
@@ -9,46 +9,47 @@ const MapFilterContextProvider = ({ children }) => {
   const [filterValues, setFilterValues] = useState({});
   const [selectedDisaster, setSelectedDisaster] = useState();
   const [search, setSeach] = useState({
-    province: PROVINCE_OPTIONS?.[0],
+    province: MAP_OPTIONS.find((item) => item.label === "สุพรรณบุรี"),
   });
 
   const onChangeSearch = (value) => {
     setSeach((prev) => ({ ...prev, ...value }));
   };
 
-  const updateMapLayers = useCallback(async (newFilters) => {
-    // TODO: call BE API
-    console.log(newFilters);
-  }, []);
-
   const handleRadioChange = useCallback(
     (section, value, checked) => {
       const newFilters = {
         ...filterValues,
         [section]: {
-          [value]: checked,
+          [value.label]: checked ? value.layer : undefined,
         },
       };
       setFilterValues(newFilters);
-      updateMapLayers(newFilters);
     },
-    [filterValues, updateMapLayers]
+    [filterValues]
   );
 
   const handleSwitchChange = useCallback(
-    (section, value, checked) => {
+    (section, label, checked, layer) => {
       const newFilters = {
         ...filterValues,
         [section]: {
           ...filterValues[section],
-          [value]: checked,
+          [label]: checked ? layer : undefined,
         },
       };
       setFilterValues(newFilters);
-      updateMapLayers(newFilters);
     },
-    [filterValues, updateMapLayers]
+    [filterValues]
   );
+
+  useEffect(() => {
+    if (search?.level && selectedDisaster) {
+      setFilterValues(
+        DEFAULT_FILTER_DATA[selectedDisaster][search.level.value] ?? {}
+      );
+    }
+  }, [search, selectedDisaster]);
 
   const contextValue = {
     filterValues,

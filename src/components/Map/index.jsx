@@ -5,14 +5,15 @@ import MapView from "@arcgis/core/views/MapView";
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import Zoom from "@arcgis/core/widgets/Zoom";
 import Expand from "@arcgis/core/widgets/Fullscreen";
-import { defaultLayer, DOMAIN, mapLayer } from "@/constants";
+import { MAP_LAYER } from "@/constants";
 import { MapFilterContext } from "@/contexts/mapFilterContext";
 import "./index.css";
 
 const ArcgisMap = () => {
   const mapRef = useRef(null);
 
-  const { search, filterValues } = useContext(MapFilterContext);
+  const { search, filterValues, selectedDisaster } =
+    useContext(MapFilterContext);
 
   const formatQuery = useCallback(
     (url) => {
@@ -34,23 +35,33 @@ const ArcgisMap = () => {
       new Map({
         basemap: "topo",
       }),
-    [search.province, search.amphoe]
+    [search.province, search.amphoe, search.level, selectedDisaster]
   );
 
-  /// create all layer and add to map but hide it
+  const allLayer = useMemo(() => {
+    if (selectedDisaster && search.level) {
+      return MAP_LAYER?.[selectedDisaster]?.[search.level.value];
+    }
+    return [];
+  }, [selectedDisaster, search.level]);
+
   const allFeatureLayer = useMemo(() => {
-    return Object.keys(mapLayer).map((url) => {
+    const result = allLayer
+      ?.sort((a, b) => b.order - a.order)
+      .flatMap((item) => item.layer);
+
+    return result?.map((url) => {
       const layer = new FeatureLayer({
-        url: formatQuery(`${DOMAIN}${url}`),
+        url: formatQuery(url),
       });
       map.add(layer);
       layer.visible = false;
       return {
         layer: layer,
-        key: Number(url),
+        url: url,
       };
     });
-  }, [map, formatQuery]);
+  }, [map, allLayer]);
 
   useEffect(() => {
     if (mapRef.current) {
@@ -74,36 +85,19 @@ const ArcgisMap = () => {
     }
   }, [map, mapRef, search?.amphoe, search?.province]);
 
-  // map filterValues with layer id
   const layer = useMemo(() => {
     if (Object.values(filterValues).length === 0) {
       return [];
     }
-    const result = Object.values(filterValues)
+    return Object.values(filterValues)
       .flatMap((obj) => Object.entries(obj))
-      .filter(([_, value]) => value === true)
-      .map(([key]) => key);
-
-    return Object.entries(mapLayer)
-      .filter(([_, values]) => values.some((value) => result.includes(value)))
-      .map(([key]) => Number(key))
-      .sort((a, b) => a - b);
+      .filter(([_, value]) => value?.length > 0)
+      .flatMap(([key, value]) => value);
   }, [filterValues]);
 
-  // add default layer when change province or amphoe
-  useEffect(() => {
-    defaultLayer?.[search?.province?.value].forEach((url) => {
-      const featureLayer = new FeatureLayer({
-        url: formatQuery(`${DOMAIN}${url}`),
-      });
-      map?.add(featureLayer);
-    });
-  }, [formatQuery, map, search?.province]);
-
-  //show and hide layer depend on filterValues
   useEffect(() => {
     allFeatureLayer?.forEach((item) => {
-      if (layer.includes(item.key)) {
+      if (layer.includes(item.url)) {
         item.layer.visible = true;
       } else {
         item.layer.visible = false;

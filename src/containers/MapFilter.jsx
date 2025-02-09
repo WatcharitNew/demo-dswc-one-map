@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 import { MapFilterContext } from "@/contexts/mapFilterContext";
 import { DISASTER_TYPE, FILTER_DATA, LEVEL } from "../constants";
