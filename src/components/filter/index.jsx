@@ -5,20 +5,14 @@ import { MapFilterContext } from "@/contexts/mapFilterContext";
 import clsx from "clsx";
 import {
   DISASTER_TYPE,
-  PROVINCE_OPTIONS,
-  AMPHOE_OPTIONS,
   DISASTER_TYPE_ENABLE,
+  MAP_OPTIONS,
 } from "../../constants/index";
 import Level from "./Level";
 
 const Filter = () => {
-  const {
-    selectedDisaster,
-    setSelectedDisaster,
-    search,
-    onChangeSearch,
-    setFilterValues,
-  } = useContext(MapFilterContext);
+  const { selectedDisaster, setSelectedDisaster, search, onChangeSearch } =
+    useContext(MapFilterContext);
 
   return (
     <div className="row bg-blue-50 items-center ml-4 z-50 mt-2">
@@ -43,7 +37,6 @@ const Filter = () => {
                   )}
                   onClick={() => {
                     if (isEnable) {
-                      setFilterValues({});
                       setSelectedDisaster(isSelected ? undefined : item.value);
                     }
                   }}
@@ -57,19 +50,22 @@ const Filter = () => {
             value={search?.province?.value ?? null}
             withCheckIcon={false}
             placeholder="เลือกจังหวัด"
-            data={PROVINCE_OPTIONS}
+            data={MAP_OPTIONS}
             onChange={(_value, option) => {
               if (option) {
-                onChangeSearch({ province: option });
-                setFilterValues({});
+                onChangeSearch({
+                  province: option,
+                  amphoe: undefined,
+                });
               }
             }}
           />
+
           <Select
             value={search?.amphoe?.value ?? null}
             withCheckIcon={false}
             placeholder="เลือกอำเภอ"
-            data={AMPHOE_OPTIONS}
+            data={search?.province?.option}
             disabled={search?.province === undefined}
             clearable
             onChange={(_value, option) => {
@@ -81,7 +77,6 @@ const Filter = () => {
                   amphoe: undefined,
                 });
               }
-              setFilterValues({});
             }}
           />
         </div>

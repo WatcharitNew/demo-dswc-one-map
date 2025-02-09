@@ -1,4 +1,5 @@
 import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
+import TH_DATA from "./thailand_amphoe.json";
 
 export const FILTER_DATA = {
   flood: {
@@ -6,51 +7,165 @@ export const FILTER_DATA = {
       {
         type: "radio",
         label: "คาดการณ์การเกิดภัย",
-        data: ["คาดการณ์ 1 วัน", "คาดการณ์ 2 วัน", "คาดการณ์ 3 วัน"],
+        data: [
+          {
+            label: "คาดการณ์ 1 วัน",
+            order: 3,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
+            ],
+          },
+          {
+            label: "คาดการณ์ 2 วัน",
+            order: 3,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
+            ],
+          },
+          {
+            label: "คาดการณ์ 3 วัน",
+            order: 3,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
+            ],
+          },
+        ],
       },
       {
         type: "switch",
         label: "ข้อมูลเขื่อน",
         data: null,
+        order: 1,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
+        ],
       },
       {
         type: "switch",
         label: "ข้อมูลน้ำท่า",
         data: null,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
+        ],
       },
       {
         type: "switch",
         label: "ปริมาณฝน",
         data: null,
+        order: 2,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+        ],
       },
       {
         type: "switch",
         label: "ศูนย์พักพิง",
         data: null,
+        order: 1,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/Shelter_91123/FeatureServer/1",
+        ],
       },
     ],
     handle: [
       {
         type: "switch",
+        label: "พื้นที่เกิดภัย",
+        data: null,
+        order: 3,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
+        ],
+      },
+      {
+        type: "switch",
         label: "ปัจจัยการเกิดภัย",
-        data: ["คาดการณ์พายุ", "ข้อมูลเขื่อน", "ข้อมูลน้ำท่า", "ปริมาณฝน"],
+        data: [
+          {
+            label: "คาดการณ์พายุ",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+            ],
+          },
+          {
+            label: "ข้อมูลเขื่อน",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
+            ],
+          },
+          {
+            label: "ข้อมูลน้ำท่า",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
+            ],
+          },
+          {
+            label: "ปริมาณฝน",
+            order: 2,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+            ],
+          },
+        ],
       },
       {
         type: "switch",
         label: "สถานที่สำคัญ",
-        data: ["ศูนย์พักพิง"],
+        data: [
+          {
+            label: "ศูนย์พักพิง",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/Shelter_91123/FeatureServer",
+            ],
+          },
+          {
+            label: "ทรัพยากรช่วยเหลือ",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
+            ],
+          },
+        ],
       },
     ],
     restore: [
       {
         type: "switch",
+        label: "พื้นที่เกิดภัย",
+        data: null,
+        order: 2,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
+        ],
+      },
+      {
+        type: "switch",
         label: "สถานที่สำคัญ",
-        data: ["พื้นที่การเกษตร"],
+        data: [
+          {
+            label: "พื้นที่การเกษตร",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
+            ],
+          },
+        ],
       },
       {
         type: "switch",
         label: "ทรัพยากรช่วยเหลือ",
         data: null,
+        order: 1,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
+        ],
       },
     ],
   },
@@ -59,12 +174,43 @@ export const FILTER_DATA = {
       {
         type: "radio",
         label: "คาดการณ์การเกิดภัย",
-        data: ["คาดการณ์ 1 วัน", "คาดการณ์ 2 วัน", "คาดการณ์ 3 วัน"],
+        data: [
+          {
+            label: "คาดการณ์ 1 วัน",
+            order: 3,
+            layer: [],
+          },
+          {
+            label: "คาดการณ์ 2 วัน",
+            order: 3,
+            layer: [],
+          },
+          {
+            label: "คาดการณ์ 3 วัน",
+            order: 3,
+            layer: [],
+          },
+        ],
       },
       {
         type: "switch",
         label: "ปัจจัยการเกิดภัย",
-        data: ["hotspot", "น้ำฝน"],
+        data: [
+          {
+            label: "hotspot",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
+            ],
+          },
+          {
+            label: "น้ำฝน",
+            order: 2,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+            ],
+          },
+        ],
       },
     ],
     handle: [
@@ -72,39 +218,236 @@ export const FILTER_DATA = {
         type: "switch",
         label: "ข้อมูล pm2.5",
         data: null,
+        order: 3,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/0",
+        ],
       },
       {
         type: "switch",
         label: "ข้อมูลทรัพยากร",
         data: null,
+        order: 1,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
+        ],
       },
       {
         type: "switch",
         label: "ปัจจัยการเกิดภัย",
-        data: ["hotspot", "น้ำฝน"],
+        data: [
+          {
+            label: "hotspot",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
+            ],
+          },
+          {
+            label: "น้ำฝน",
+            order: 2,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+            ],
+          },
+        ],
       },
     ],
     restore: [
       {
         type: "switch",
+        label: "พื้นที่เกิดภัย",
+        data: null,
+        order: 3,
+        layer: [],
+      },
+      {
+        type: "switch",
         label: "สถานที่สำคัญ",
-        data: ["พื้นที่การเกษตร"],
+        data: [
+          {
+            label: "พื้นที่การเกษตร",
+            order: 1,
+            layer: [
+              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
+            ],
+          },
+        ],
       },
       {
         type: "switch",
         label: "ทรัพยากรช่วยเหลือ",
         data: null,
+        order: 1,
+        layer: [
+          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
+        ],
       },
     ],
   },
 };
 
-export const mapLayer = {
-  0: ["น้ำฝน", "ปริมาณฝน", "ข้อมูล pm2.5"],
-  2: ["คาดการณ์ 3 วัน", "ข้อมูลทรัพยากร"],
-  3: ["คาดการณ์ 1 วัน", "ทรัพยากรช่วยเหลือ", "ข้อมูลเขื่อน"],
-  4: ["hotspot", "ศูนย์พักพิง", "คาดการณ์พายุ"],
-  5: ["คาดการณ์ 2 วัน", "ข้อมูลน้ำท่า", "พื้นที่การเกษตร"],
+export const MAP_LAYER = {
+  flood: {
+    watchOut: [
+      {
+        order: 3,
+        layer: FILTER_DATA.flood.watchOut[0].data[0].layer,
+      },
+      {
+        order: 3,
+        layer: FILTER_DATA.flood.watchOut[0].data[1].layer,
+      },
+      {
+        order: 3,
+        layer: FILTER_DATA.flood.watchOut[0].data[2].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.watchOut[1].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.watchOut[2].layer,
+      },
+      {
+        order: 2,
+        layer: FILTER_DATA.flood.watchOut[3].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.watchOut[4].layer,
+      },
+    ],
+    handle: [
+      {
+        order: 3,
+        layer: FILTER_DATA.flood.handle[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.handle[1].data[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.handle[1].data[1].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.handle[1].data[2].layer,
+      },
+      {
+        order: 2,
+        layer: FILTER_DATA.flood.handle[1].data[3].layer,
+      },
+      {
+        label: "ศูนย์พักพิง",
+        order: 1,
+        layer: FILTER_DATA.flood.handle[2].data[0].layer,
+      },
+      {
+        label: "ทรัพยากรช่วยเหลือ",
+        layer: FILTER_DATA.flood.handle[2].data[1].layer,
+      },
+    ],
+    restore: [
+      {
+        order: 2,
+        layer: FILTER_DATA.flood.restore[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.restore[1].data[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA.flood.restore[2].layer,
+      },
+    ],
+  },
+  "PM2.5": {
+    watchOut: [
+      {
+        order: 3,
+        layer: [],
+      },
+      {
+        order: 3,
+        layer: [],
+      },
+      {
+        order: 3,
+        layer: [],
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA["PM2.5"].watchOut[1].data[0].layer,
+      },
+      {
+        order: 2,
+        layer: FILTER_DATA["PM2.5"].watchOut[1].data[1].layer,
+      },
+    ],
+    handle: [
+      {
+        order: 3,
+        layer: FILTER_DATA["PM2.5"].handle[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA["PM2.5"].handle[1].layer,
+      },
+      {
+        order: 1,
+
+        layer: FILTER_DATA["PM2.5"].handle[2].data[0].layer,
+      },
+      {
+        order: 2,
+        layer: FILTER_DATA["PM2.5"].handle[2].data[1].layer,
+      },
+    ],
+    restore: [
+      {
+        order: 3,
+        layer: [],
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA["PM2.5"].restore[1].data[0].layer,
+      },
+      {
+        order: 1,
+        layer: FILTER_DATA["PM2.5"].restore[2].layer,
+      },
+    ],
+  },
+};
+
+export const DEFAULT_FILTER_DATA = {
+  flood: {
+    watchOut: {
+      คาดการณ์การเกิดภัย: {
+        "คาดการณ์ 3 วัน": FILTER_DATA.flood.watchOut[0].data[2].layer,
+      },
+    },
+    handle: {
+      พื้นที่เกิดภัย: { พื้นที่เกิดภัย: FILTER_DATA.flood.handle[0].layer },
+    },
+    restore: {
+      พื้นที่เกิดภัย: { พื้นที่เกิดภัย: FILTER_DATA.flood.handle[0].layer },
+    },
+  },
+  "PM2.5": {
+    watchOut: {
+      ปัจจัยการเกิดภัย: {
+        hotspot: FILTER_DATA["PM2.5"].watchOut[1].data[0].layer,
+      },
+    },
+    handle: {
+      "ข้อมูล pm2.5": { "ข้อมูล pm2.5": FILTER_DATA["PM2.5"].handle[0].layer },
+    },
+  },
 };
 export const DISASTERS = [
   {
@@ -157,27 +500,6 @@ export const DISASTER_TYPE = [
 ];
 
 export const DISASTER_TYPE_ENABLE = ["flood", "PM2.5"];
-
-export const PROVINCE_OPTIONS = [
-  {
-    label: "สุพรรณบุรี",
-    value: "สุพรรณบุรี",
-    location: [100.1326371, 14.5477289],
-  },
-];
-
-export const AMPHOE_OPTIONS = [
-  {
-    label: "สุพรรณบุรี",
-    value: "สุพรรณบุรี",
-    location: [100.11, 14.484444],
-  },
-  {
-    label: "ด่านช้าง",
-    value: "ด่านช้าง",
-    location: [99.697222, 14.841667],
-  },
-];
 
 export const LEVEL = [
   {
@@ -274,18 +596,40 @@ export const INFORMATION = [
   },
 ];
 
-export const DOMAIN =
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/";
+export const TH = TH_DATA;
 
-export const defaultLayer = {
-  สุพรรณบุรี: [1],
-};
+export const MAP_OPTIONS = Object.entries(TH_DATA).map(([key, value]) => {
+  const { lat, long, ...subLocations } = value;
 
-export const LAYER_RUL = [
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-  "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
+  return {
+    label: key,
+    value: key,
+    location: [long, lat],
+    option: Object.entries(subLocations).map(([subKey, subValue]) => ({
+      label: subKey,
+      value: subKey,
+      location: [subValue.long, subValue.lat],
+    })),
+  };
+});
+
+export const PROVINCE_OPTIONS = [
+  {
+    label: "สุพรรณบุรี",
+    value: "สุพรรณบุรี",
+    location: [100.1326371, 14.5477289],
+  },
+];
+
+export const AMPHOE_OPTIONS = [
+  {
+    label: "สุพรรณบุรี",
+    value: "สุพรรณบุรี",
+    location: [100.11, 14.484444],
+  },
+  {
+    label: "ด่านช้าง",
+    value: "ด่านช้าง",
+    location: [99.697222, 14.841667],
+  },
 ];
