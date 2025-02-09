@@ -381,41 +381,30 @@ export const MAP_LAYER = {
       },
       {
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
-        ],
+        layer: FILTER_DATA["PM2.5"].watchOut[1].data[0].layer,
       },
       {
         order: 2,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-        ],
+        layer: FILTER_DATA["PM2.5"].watchOut[1].data[1].layer,
       },
     ],
     handle: [
       {
         order: 3,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/0",
-        ],
+        layer: FILTER_DATA["PM2.5"].handle[0].layer,
       },
       {
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-        ],
+        layer: FILTER_DATA["PM2.5"].handle[1].layer,
       },
       {
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
-        ],
+
+        layer: FILTER_DATA["PM2.5"].handle[2].data[0].layer,
       },
       {
         order: 2,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-        ],
+        layer: FILTER_DATA["PM2.5"].handle[2].data[1].layer,
       },
     ],
     restore: [
@@ -425,15 +414,11 @@ export const MAP_LAYER = {
       },
       {
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
-        ],
+        layer: FILTER_DATA["PM2.5"].restore[1].data[0].layer,
       },
       {
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-        ],
+        layer: FILTER_DATA["PM2.5"].restore[2].layer,
       },
     ],
   },
