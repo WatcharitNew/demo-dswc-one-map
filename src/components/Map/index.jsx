@@ -52,8 +52,6 @@ const ArcgisMap = () => {
     });
   }, [map, formatQuery]);
 
-  useEffect(() => {}, [map, search.province, search.amphoe]);
-
   useEffect(() => {
     if (mapRef.current) {
       const mapView = new MapView({
