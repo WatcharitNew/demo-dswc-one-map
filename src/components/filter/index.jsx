@@ -21,8 +21,8 @@ const Filter = () => {
   } = useContext(MapFilterContext);
 
   return (
-    <div className="col bg-blue-50 items-center ml-4 z-50">
-      <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-4 pl-0 pr-[30px] rounded-l-[40px] ">
+    <div className="row bg-blue-50 items-center ml-4 z-50 mt-2">
+      <div className="row justify-between items-center w-full h-[76px] bg-gradient-to-r from-white to-blue-50 p-[1rem] pl-0 pr-[30px] rounded-l-[40px] ">
         <div className="row items-center gap-2 z-30">
           <Level />
           <div className="row gap-2">
@@ -53,39 +53,41 @@ const Filter = () => {
               );
             })}
           </div>
+          <Select
+            value={search?.province?.value ?? null}
+            withCheckIcon={false}
+            placeholder="เลือกจังหวัด"
+            data={PROVINCE_OPTIONS}
+            onChange={(_value, option) => {
+              if (option) {
+                onChangeSearch({ province: option });
+                setFilterValues({});
+              }
+            }}
+          />
+          <Select
+            value={search?.amphoe?.value ?? null}
+            withCheckIcon={false}
+            placeholder="เลือกอำเภอ"
+            data={AMPHOE_OPTIONS}
+            disabled={search?.province === undefined}
+            clearable
+            onChange={(_value, option) => {
+              if (option) {
+                onChangeSearch({ amphoe: option });
+              } else {
+                onChangeSearch({
+                  ...search,
+                  amphoe: undefined,
+                });
+              }
+              setFilterValues({});
+            }}
+          />
         </div>
         <p className="text-xs pt-[10px] text-gray-400">
           ข้อมูล​ ณ วันที่ 29 ต.ค. 2024 - 4 พ.ย. 2024
         </p>
-      </div>
-      <div className="col gap-1 absolute left-[950px] top-[141px] z-30 min-w-40">
-        <Select
-          value={search?.province?.value ?? null}
-          withCheckIcon={false}
-          placeholder="เลือกจังหวัด"
-          data={PROVINCE_OPTIONS}
-          onChange={(_value, option) => {
-            option && onChangeSearch({ province: option });
-          }}
-        />
-        <Select
-          value={search?.amphoe?.value ?? null}
-          withCheckIcon={false}
-          placeholder="เลือกตำบล"
-          data={AMPHOE_OPTIONS}
-          disabled={search?.province === undefined}
-          clearable
-          onChange={(_value, option) => {
-            if (option) {
-              onChangeSearch({ amphoe: option });
-            } else {
-              onChangeSearch({
-                ...search,
-                amphoe: undefined,
-              });
-            }
-          }}
-        />
       </div>
     </div>
   );

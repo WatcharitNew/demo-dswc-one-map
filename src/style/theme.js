@@ -13,6 +13,7 @@ const theme = createTheme({
         input: {
           borderRadius: "0.5rem",
           opacity: 1,
+          height: "44px",
         },
       },
     }),

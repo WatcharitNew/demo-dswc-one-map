@@ -34,30 +34,8 @@ const ArcgisMap = () => {
       new Map({
         basemap: "topo",
       }),
-    []
+    [search.province, search.amphoe]
   );
-
-  useEffect(() => {
-    if (mapRef.current) {
-      const mapView = new MapView({
-        container: mapRef.current,
-        map: map,
-        center: search?.amphoe?.location || search?.province?.location,
-        zoom: 9,
-      });
-
-      const zoomWidget = new Zoom({
-        view: mapView,
-      });
-
-      const expandWidget = new Expand({
-        view: mapView,
-      });
-
-      mapView.ui.add(zoomWidget, "top-right");
-      mapView.ui.add(expandWidget, "top-right");
-    }
-  }, [map, mapRef, search?.amphoe, search?.province]);
 
   /// create all layer and add to map but hide it
   const allFeatureLayer = useMemo(() => {
@@ -73,6 +51,28 @@ const ArcgisMap = () => {
       };
     });
   }, [map, formatQuery]);
+
+  useEffect(() => {
+    if (mapRef.current) {
+      const mapView = new MapView({
+        container: mapRef.current,
+        map: map,
+        center: search?.amphoe?.location || search?.province?.location,
+        zoom: search?.amphoe?.location ? 14 : 10,
+      });
+
+      const zoomWidget = new Zoom({
+        view: mapView,
+      });
+
+      const expandWidget = new Expand({
+        view: mapView,
+      });
+
+      mapView.ui.add(zoomWidget, "top-right");
+      mapView.ui.add(expandWidget, "top-right");
+    }
+  }, [map, mapRef, search?.amphoe, search?.province]);
 
   // map filterValues with layer id
   const layer = useMemo(() => {
