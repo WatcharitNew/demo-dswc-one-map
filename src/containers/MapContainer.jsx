@@ -31,7 +31,7 @@ export const MapContainer = () => {
 
   return (
     <div className="bg-white">
-      <div className="w-full h-[46rem] relative">
+      <div className="w-full sm:h-[46rem] 2xl:h-[54rem] relative">
         <ArcgisMap />
         <MapFilter />
       </div>

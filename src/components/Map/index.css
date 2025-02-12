@@ -1,4 +1,4 @@
-@import url("https://js.arcgis.com/4.22/esri/themes/light/main.css");
+@import url("https://js.arcgis.com/4.31/esri/themes/light/main.css");
 
 .map {
   font-family: Arial;
@@ -41,4 +41,26 @@
 
 .esri-widget--button:focus {
   outline: none;
+}
+
+.esri-popup {
+  background-color: transparent;
+}
+
+.esri-view-surface:focus {
+  border: none !important;
+  --esri-view-outline: none !important;
+}
+canvas:focus-visible {
+  outline: none;
+  border: none;
+}
+
+.icon-container {
+  margin-right: 4px;
+}
+
+.container {
+  height: 80%;
+  width: 70%;
 }

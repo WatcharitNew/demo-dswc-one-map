@@ -1,6 +1,49 @@
 import { Boat, Home, Human, Seeds, Shelter } from "@/icons";
 import TH_DATA from "./thailand_amphoe.json";
 
+export const LAYER_LIST = {
+  DevMap_SPR_0: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
+    title: "DevMap SPR - {template_name}: {storm_name}",
+  },
+  DevMap_SPR_1: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
+    title: "DevMap SPR - {template_name}: {station_name_th}",
+  },
+  DevMap_SPR_2: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
+    title: "DevMap SPR - {template_name}: {name}",
+  },
+  DevMap_SPR_3: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
+  },
+  DevMap_SPR_4: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
+  },
+  DevMap_SPR_5: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
+  },
+  Shelter_1: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/Shelter_91123/FeatureServer/1",
+    title: "Shelter 91123 - Shelkter : {sheltername}",
+  },
+  abt_machine_0: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
+    title: "Abt machine 1 : {user_name}",
+  },
+  LU_SPB_0: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
+  },
+  suphanburi_pm25_hotspots_1: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
+    title: "Suphanburi pm25 hotspots: {lu_name}",
+  },
+  suphanburi_pm25_hotspots_0: {
+    url: "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/0",
+    title: "Suphanburi pm25 hotspots: {station_name}",
+  },
+};
+
 export const FILTER_DATA = {
   flood: {
     watchOut: [
@@ -11,26 +54,17 @@ export const FILTER_DATA = {
           {
             label: "คาดการณ์ 1 วัน",
             order: 3,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_0, LAYER_LIST.DevMap_SPR_5],
           },
           {
             label: "คาดการณ์ 2 วัน",
             order: 3,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_0, LAYER_LIST.DevMap_SPR_5],
           },
           {
             label: "คาดการณ์ 3 วัน",
             order: 3,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/5",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_0, LAYER_LIST.DevMap_SPR_5],
           },
         ],
       },
@@ -39,35 +73,27 @@ export const FILTER_DATA = {
         label: "ข้อมูลเขื่อน",
         data: null,
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
-        ],
+        layer: [LAYER_LIST.DevMap_SPR_2],
       },
       {
         type: "switch",
         label: "ข้อมูลน้ำท่า",
         data: null,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
-        ],
+        layer: [LAYER_LIST.DevMap_SPR_1],
       },
       {
         type: "switch",
         label: "ปริมาณฝน",
         data: null,
         order: 2,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-        ],
+        layer: [LAYER_LIST.DevMap_SPR_4],
       },
       {
         type: "switch",
         label: "ศูนย์พักพิง",
         data: null,
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/Shelter_91123/FeatureServer/1",
-        ],
+        layer: [LAYER_LIST.Shelter_1],
       },
     ],
     handle: [
@@ -76,9 +102,7 @@ export const FILTER_DATA = {
         label: "พื้นที่เกิดภัย",
         data: null,
         order: 3,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
-        ],
+        layer: [LAYER_LIST.DevMap_SPR_3],
       },
       {
         type: "switch",
@@ -87,30 +111,22 @@ export const FILTER_DATA = {
           {
             label: "คาดการณ์พายุ",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/0",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_0],
           },
           {
             label: "ข้อมูลเขื่อน",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/2",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_2],
           },
           {
             label: "ข้อมูลน้ำท่า",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/1",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_1],
           },
           {
             label: "ปริมาณฝน",
             order: 2,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_4],
           },
         ],
       },
@@ -121,16 +137,12 @@ export const FILTER_DATA = {
           {
             label: "ศูนย์พักพิง",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/Shelter_91123/FeatureServer",
-            ],
+            layer: [LAYER_LIST.Shelter_1],
           },
           {
             label: "ทรัพยากรช่วยเหลือ",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-            ],
+            layer: [LAYER_LIST.abt_machine_0],
           },
         ],
       },
@@ -141,9 +153,7 @@ export const FILTER_DATA = {
         label: "พื้นที่เกิดภัย",
         data: null,
         order: 2,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/3",
-        ],
+        layer: [LAYER_LIST.DevMap_SPR_3],
       },
       {
         type: "switch",
@@ -152,9 +162,7 @@ export const FILTER_DATA = {
           {
             label: "พื้นที่การเกษตร",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
-            ],
+            layer: [LAYER_LIST.LU_SPB_0],
           },
         ],
       },
@@ -163,9 +171,7 @@ export const FILTER_DATA = {
         label: "ทรัพยากรช่วยเหลือ",
         data: null,
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-        ],
+        layer: [LAYER_LIST.abt_machine_0],
       },
     ],
   },
@@ -199,16 +205,12 @@ export const FILTER_DATA = {
           {
             label: "hotspot",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
-            ],
+            layer: [LAYER_LIST.suphanburi_pm25_hotspots_1],
           },
           {
             label: "น้ำฝน",
             order: 2,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_4],
           },
         ],
       },
@@ -219,18 +221,14 @@ export const FILTER_DATA = {
         label: "ข้อมูล pm2.5",
         data: null,
         order: 3,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/0",
-        ],
+        layer: [LAYER_LIST.suphanburi_pm25_hotspots_0],
       },
       {
         type: "switch",
         label: "ข้อมูลทรัพยากร",
         data: null,
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-        ],
+        layer: [LAYER_LIST.abt_machine_0],
       },
       {
         type: "switch",
@@ -239,16 +237,12 @@ export const FILTER_DATA = {
           {
             label: "hotspot",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/suphanburi_pm25_hotspots/FeatureServer/1",
-            ],
+            layer: [LAYER_LIST.suphanburi_pm25_hotspots_1],
           },
           {
             label: "น้ำฝน",
             order: 2,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/DevMap_SPR/FeatureServer/4",
-            ],
+            layer: [LAYER_LIST.DevMap_SPR_4],
           },
         ],
       },
@@ -268,9 +262,7 @@ export const FILTER_DATA = {
           {
             label: "พื้นที่การเกษตร",
             order: 1,
-            layer: [
-              "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/LU_SPB_2564/FeatureServer/0",
-            ],
+            layer: [LAYER_LIST.LU_SPB_0],
           },
         ],
       },
@@ -279,146 +271,7 @@ export const FILTER_DATA = {
         label: "ทรัพยากรช่วยเหลือ",
         data: null,
         order: 1,
-        layer: [
-          "https://gis-portal.disaster.go.th/arcgis/rest/services/Hosted/abt_machine_1/FeatureServer/0",
-        ],
-      },
-    ],
-  },
-};
-
-export const MAP_LAYER = {
-  flood: {
-    watchOut: [
-      {
-        order: 3,
-        layer: FILTER_DATA.flood.watchOut[0].data[0].layer,
-      },
-      {
-        order: 3,
-        layer: FILTER_DATA.flood.watchOut[0].data[1].layer,
-      },
-      {
-        order: 3,
-        layer: FILTER_DATA.flood.watchOut[0].data[2].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.watchOut[1].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.watchOut[2].layer,
-      },
-      {
-        order: 2,
-        layer: FILTER_DATA.flood.watchOut[3].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.watchOut[4].layer,
-      },
-    ],
-    handle: [
-      {
-        order: 3,
-        layer: FILTER_DATA.flood.handle[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.handle[1].data[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.handle[1].data[1].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.handle[1].data[2].layer,
-      },
-      {
-        order: 2,
-        layer: FILTER_DATA.flood.handle[1].data[3].layer,
-      },
-      {
-        label: "ศูนย์พักพิง",
-        order: 1,
-        layer: FILTER_DATA.flood.handle[2].data[0].layer,
-      },
-      {
-        label: "ทรัพยากรช่วยเหลือ",
-        layer: FILTER_DATA.flood.handle[2].data[1].layer,
-      },
-    ],
-    restore: [
-      {
-        order: 2,
-        layer: FILTER_DATA.flood.restore[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.restore[1].data[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA.flood.restore[2].layer,
-      },
-    ],
-  },
-  "PM2.5": {
-    watchOut: [
-      {
-        order: 3,
-        layer: [],
-      },
-      {
-        order: 3,
-        layer: [],
-      },
-      {
-        order: 3,
-        layer: [],
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA["PM2.5"].watchOut[1].data[0].layer,
-      },
-      {
-        order: 2,
-        layer: FILTER_DATA["PM2.5"].watchOut[1].data[1].layer,
-      },
-    ],
-    handle: [
-      {
-        order: 3,
-        layer: FILTER_DATA["PM2.5"].handle[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA["PM2.5"].handle[1].layer,
-      },
-      {
-        order: 1,
-
-        layer: FILTER_DATA["PM2.5"].handle[2].data[0].layer,
-      },
-      {
-        order: 2,
-        layer: FILTER_DATA["PM2.5"].handle[2].data[1].layer,
-      },
-    ],
-    restore: [
-      {
-        order: 3,
-        layer: [],
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA["PM2.5"].restore[1].data[0].layer,
-      },
-      {
-        order: 1,
-        layer: FILTER_DATA["PM2.5"].restore[2].layer,
+        layer: [LAYER_LIST.abt_machine_0],
       },
     ],
   },
@@ -449,6 +302,7 @@ export const DEFAULT_FILTER_DATA = {
     },
   },
 };
+
 export const DISASTERS = [
   {
     srcName: "disaster-flood",
