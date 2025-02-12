@@ -141,13 +141,6 @@ const ArcgisMap = () => {
               fieldInfos: fieldInfos,
             },
           ],
-          actions: [
-            {
-              id: "table",
-              image: "/table_icon.svg",
-              title: "Table",
-            },
-          ],
         }
       : undefined;
   };
@@ -196,7 +189,6 @@ const ArcgisMap = () => {
   }, [filterValues]);
 
   useEffect(() => {
-    console.log("allFeatureLayer", allFeatureLayer);
     allFeatureLayer?.forEach((item) => {
       if (layer.includes(item.url)) {
         item.layer.visible = true;
