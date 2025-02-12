@@ -12,7 +12,10 @@ const MapFilterRadio = ({ label, checked, onChange }) => {
           size="xs"
           variant="outline"
           checked={checked}
-          onChange={(event) => onChange(event.currentTarget.checked)}
+          onChange={() => {}}
+          onClick={(_event) => {
+            onChange(!checked);
+          }}
           classNames={{
             body: "items-center",
           }}
