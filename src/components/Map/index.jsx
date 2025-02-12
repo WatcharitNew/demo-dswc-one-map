@@ -19,6 +19,7 @@ import { uniqBy } from "lodash";
 
 const ArcgisMap = () => {
   const mapRef = useRef(null);
+  const [view, setView] = useState();
   const [allFeatureLayer, setAllFeatureLayer] = useState([]);
   const { search, filterValues, selectedDisaster } =
     useContext(MapFilterContext);
@@ -42,29 +43,33 @@ const ArcgisMap = () => {
       new Map({
         basemap: "topo",
       }),
-    [search.province, search.amphoe, search.level, selectedDisaster]
+    []
   );
 
   useEffect(() => {
-    if (mapRef.current) {
-      const mapView = new MapView({
-        container: mapRef.current,
-        map: map,
-        center: search?.amphoe?.location || search?.province?.location,
-        zoom: search?.amphoe?.location ? 14 : 10,
-      });
+    allFeatureLayer.forEach((item) => item.layer.destroy());
+  }, [search.level, selectedDisaster]);
 
-      const zoomWidget = new Zoom({
-        view: mapView,
-      });
+  useEffect(() => {
+    if (!mapRef.current) return;
+    const mapView = new MapView({
+      container: mapRef.current,
+      map: map,
+      center: search?.amphoe?.location || search?.province?.location,
+      zoom: search?.amphoe?.location ? 14 : 10,
+    });
 
-      const expandWidget = new Expand({
-        view: mapView,
-      });
+    const zoomWidget = new Zoom({
+      view: mapView,
+    });
 
-      mapView.ui.add(zoomWidget, "top-right");
-      mapView.ui.add(expandWidget, "top-right");
-    }
+    const expandWidget = new Expand({
+      view: mapView,
+    });
+
+    mapView.ui.add(zoomWidget, "top-right");
+    mapView.ui.add(expandWidget, "top-right");
+    setView(mapView);
   }, [map, mapRef, search?.amphoe, search?.province]);
 
   const allLayer = useMemo(() => {
@@ -136,6 +141,13 @@ const ArcgisMap = () => {
               fieldInfos: fieldInfos,
             },
           ],
+          actions: [
+            {
+              id: "table",
+              image: "/table_icon.svg",
+              title: "Table",
+            },
+          ],
         }
       : undefined;
   };
@@ -146,6 +158,7 @@ const ArcgisMap = () => {
         url: formatQuery(layerData.url),
         popupEnabled: !!layerData?.title,
         popupTemplate: await getFormatPopupTemplate(layerData),
+        outFields: ["*"],
       });
 
       map.add(layer);
@@ -188,9 +201,10 @@ const ArcgisMap = () => {
         item.layer.visible = true;
       } else {
         item.layer.visible = false;
+        view.popup.visible = false;
       }
     });
-  }, [layer, allFeatureLayer]);
+  }, [layer, allFeatureLayer, view]);
 
   return (
     <div
