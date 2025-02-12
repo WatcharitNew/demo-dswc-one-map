@@ -79,6 +79,7 @@ export const FILTER_DATA = {
         type: "switch",
         label: "ข้อมูลน้ำท่า",
         data: null,
+        order: 1,
         layer: [LAYER_LIST.DevMap_SPR_1],
       },
       {

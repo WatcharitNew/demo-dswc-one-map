@@ -196,12 +196,15 @@ const ArcgisMap = () => {
   }, [filterValues]);
 
   useEffect(() => {
+    console.log("allFeatureLayer", allFeatureLayer);
     allFeatureLayer?.forEach((item) => {
       if (layer.includes(item.url)) {
         item.layer.visible = true;
       } else {
         item.layer.visible = false;
-        view.popup.visible = false;
+        if (view.popup.visible) {
+          view.popup.visible = false;
+        }
       }
     });
   }, [layer, allFeatureLayer, view]);
